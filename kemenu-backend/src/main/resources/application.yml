@@ -1,0 +1,45 @@
+server:
+  port: 8085
+  address: 127.0.0.1
+  tomcat:
+    mbeanregistry:
+      enabled: true
+
+management:
+  endpoints:
+    enabled-by-default: false
+    jmx:
+      exposure:
+        include: "*"
+  metrics:
+    export:
+      datadog:
+        api-key: ${DD_API_KEY}
+
+app:
+  version: @project.version@
+  secret: ${JWT_SECRET}
+  refresh: ${JWT_SECRET_REFRESH}
+  recaptcha:
+    public: 6LdTMfUUAAAAANcZwb0O_jEXYMElMEAyYdHmnKeM
+    secret: ${RECAPTCHA_TOKEN}
+  cors: https://kemenu.com, https://www.kemenu.com
+  admin:
+    username: admin@kemenu.com
+    password: ${KEMENU_ADMIN_PWD}
+  sendgrid: ${KEMENU_REGISTER_EMAILS}
+  cloudinary:
+    key: ${CLOUDINARY_KEY}
+    secret: ${CLOUDINARY_SECRET}
+    cloudname: ${CLOUDINARY_CLOUDNAME}
+
+spring:
+  jmx:
+    enabled: true
+  data:
+    mongodb:
+      uri: mongodb://${MONGO_DB_USER_KEMENU}:${MONGO_DB_PWD_KEMENU}@localhost:27017/${MONGO_DB_NAME_KEMENU}?replicaSet=k3m
+  servlet:
+    multipart:
+      max-file-size: 18MB
+      max-request-size: 18MB

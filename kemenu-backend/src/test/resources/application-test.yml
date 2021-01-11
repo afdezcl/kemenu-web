@@ -1,0 +1,29 @@
+server:
+  port: 8085
+  address: 127.0.0.1
+
+app:
+  version: test
+  secret: secret
+  refresh: refresh
+  recaptcha:
+    public: 6LdTMfUUAAAAANcZwb0O_jEXYMElMEAyYdHmnKeM
+    secret: recaptcha
+  cors: http://localhost:8085, http://localhost:4200
+  admin:
+    username: admin@example.com
+    password: adminPassword
+  sendgrid: test_send
+  cloudinary:
+    key: dev_test
+    secret: dev_test
+    cloudname: dev_test
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://admin:password@localhost:27018/kemenudb
+  servlet:
+    multipart:
+      max-file-size: 7MB
+      max-request-size: 7MB
