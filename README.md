@@ -65,7 +65,7 @@ Kemenu web application, for menu management written in Java and Angular.
 
 # Stack
 
-* Angular 9 + Bootstrap
+* Angular 11 + Bootstrap
 * Java 15 + Spring Boot
 * MongoDB
 * Docker
