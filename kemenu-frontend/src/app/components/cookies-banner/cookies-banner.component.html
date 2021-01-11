@@ -1,0 +1,8 @@
+<div class="banner">
+  <span class="banner-text">{{ 'Cookie message' | translate }}</span>
+  &nbsp;
+  &nbsp;
+  <button class="banner-accept-button" (click)="onAccept()">{{ 'Accept' | translate }}</button>
+  &nbsp;
+  <button class="banner-read-more-button" [routerLink]="['/cookies-policy']">{{ 'Read More' | translate }}</button>
+</div>

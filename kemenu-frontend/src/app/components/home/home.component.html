@@ -1,0 +1,269 @@
+<!-- Hero Section-->
+<section class="hero">
+  <div class="container mb-5">
+    <div class="row align-items-center">
+      <div class="col-lg-6 home-main-text">
+        <h1 class="hero-heading mb-0">{{ 'SloganTitle' | translate }}</h1>
+        <div class="row">
+          <div class="col-lg-10">
+            <p class="lead mt-4 mb-4">{{ 'SloganText' | translate }}</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" [routerLink]="['/register']"
+            class="btn btn-secondary">{{ 'GetStarted' | translate }}</button>
+        </div>
+      </div>
+      <div class="col-lg-6"><img class="home-image d-none d-lg-block" src="../../../assets/images/kemenu-home.png"
+          alt="home-image"></div>
+    </div>
+  </div>
+</section>
+<app-alert></app-alert>
+<!-- Intro Section-->
+<section>
+  <div class="container">
+    <div class="text-center">
+      <h2 class="font-weight-bold">{{ 'Home-section one title' | translate }}</h2>
+      <h3 class="text-primary font-weight-bold">{{ 'Home-No installations title' | translate }}</h3>
+      <p class="lead text-muted mt-2">{{ 'Home-No installations description' | translate }}</p><a href="#howWorks"
+        class="btn btn-primary">{{ 'Read More' | translate }}</a>
+    </div>
+    <div class="row">
+      <div class="col-lg-7 mx-auto intro-image mt-5"><img src="../../../assets/images/Dibujo-movil-v2.svg" alt="list-menu"
+          class="img-fluid "></div>
+    </div>
+  </div>
+</section>
+<!-- Divider Section-->
+<section class="bg-primary text-white p-5">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="font-weight-bold">{{ 'Home-Demo title' | translate }}</h2>
+      <img src="../../../assets/images/demo.jpg" alt="qr-code" class="mb-1 rounded" height="100">
+      <h4>{{ 'Try me' | translate }}</h4>
+      <div class="row">
+        <div class="col-lg-9 mx-auto">
+          <p class="lead text-white mt-2">{{ 'Home-Demo description' | translate }}</p>
+        </div>
+      </div><a [routerLink]="['/demo']" class="btn btn-outline-light">{{ 'Home-Demo button' | translate }}</a>
+    </div>
+  </div>
+</section>
+<!-- Integrations Section-->
+<section id="howWorks">
+  <div class="container">
+    <div class="text-center">
+      <h2>{{ 'Home-How Work title' | translate }}</h2>
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <p class="lead text-muted mt-2">{{ 'Home-How Work description' | translate }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="integrations mt-5">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="box text-center">
+            <div class="icon d-flex align-items-end"><img src="../../../assets/images/monitor.svg" alt="monitor"
+                class="img-fluid"></div>
+            <h4 class="font-weight-bold">{{ 'SignUp' | translate }}</h4>
+            <p class="text-small font-weight-light">{{ 'Home-Step one' | translate }}</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="box text-center">
+            <div class="icon d-flex align-items-end"><img src="../../../assets/images/coffee-cup.svg" alt="coffee-cup"
+                class="img-fluid"></div>
+            <h4 class="font-weight-bold">{{ 'Create menu' | translate }}</h4>
+            <p class="text-small font-weight-light">{{ 'Home-Step two' | translate }}</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="box text-center">
+            <div class="icon d-flex align-items-end"><img src="../../../assets/images/chat.svg" alt="chat"
+                class="img-fluid"></div>
+            <h4 class="font-weight-bold">{{ 'Share' | translate }}</h4>
+            <p class="text-small font-weight-light">{{ 'Home-Step three' | translate }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Advantages Section-->
+<section class="bg-primary text-white p-5">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="font-weight-bold">{{ 'Home-Advantages title' | translate }}</h2>
+      <div class="row mt-5">
+        <div class="col-lg-4 mt-5">
+          <img src="../../../assets/images/infinity-icon-pixabay.png" alt="advantage-qr-one" height="70" class="mb-4">
+          <h6 class="font-weight-bold mb-4">{{ 'Home-Advantage one title' | translate }}</h6>
+          <p class="text-white mt-2">{{ 'Home-Advantage one description' | translate }}</p>
+        </div>
+        <div class="col-lg-4">
+          <img src="../../../assets/images/hucha-icon-pixabay.png" alt="advantage-qr-two" height="140" class="mb-1">
+          <h6 class="font-weight-bold mb-4">{{ 'Home-Advantage two title' | translate }}</h6>
+          <p class="text-white mt-2">{{ 'Home-Advantage two description' | translate }}</p>
+        </div>
+        <div class="col-lg-4 mt-5">
+          <img src="../../../assets/images/gluten-icon-pixabay.png" alt="advantage-qr-three" height="70" class="mb-4">
+          <h6 class="font-weight-bold mb-4">{{ 'Home-Advantage three title' | translate }}</h6>
+          <p class="text-white mt-2">{{ 'Home-Advantage three description' | translate }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white">
+  <div class="container text-center text-lg-left">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <h2 class="font-weight-bold ">{{ 'Home-Spot one title' | translate }}</h2>
+        <h3 class="font-weight-bold text-primary">{{ 'Home-Spot one subtitle' | translate }}</h3>
+        <div class="row">
+          <div class="col-lg-10">
+            <p class="lead divider-subtitle mt-2 text-muted">{{ 'Home-Spot one description 1' | translate }}</p>
+            <p class="lead divider-subtitle mt-2 text-muted">{{ 'Home-Spot one description 2' | translate }}</p>
+            <p class="lead divider-subtitle mt-2 text-muted">{{ 'Home-Spot one description 3' | translate }}</p>
+          </div>
+        </div><a [routerLink]="['/register']" class="btn btn-primary">{{ 'GetStarted' | translate }}</a>
+      </div>
+      <div class="col-lg-5 mt-5 mt-lg-0"><img src="../../../assets/images/restaurant.svg" alt=""
+          class="divider-image img-fluid"></div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-gray">
+  <div class="container text-center text-lg-left">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <h2 class="font-weight-bold ">{{ 'Home-Spot two title' | translate }}</h2>
+        <h3 class="font-weight-bold text-primary">{{ 'Home-Spot two subtitle' | translate }}</h3>
+        <div class="row">
+          <div class="col-lg-10">
+            <p class="lead divider-subtitle mt-2 text-muted">{{ 'Home-Spot two description 1' | translate }}
+              <strong>{{ 'Home-Spot two description 1 bold' | translate }}</strong>{{ 'Home-Spot two description 1 continue' | translate }}
+            </p>
+            <p class="lead divider-subtitle mt-2 text-muted">{{ 'Home-Spot two description 2' | translate }}</p>
+          </div>
+        </div>
+        <a [routerLink]="['/contact']" class="btn btn-primary">{{ 'Contact' | translate }}</a>
+      </div>
+      <div class="col-lg-5 mt-5 mt-lg-0"><img src="../../../assets/images/Dibujo-Mascarilla.svg" alt=""
+          class="divider-image img-fluid"></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="bg-white">
+  <div class="container text-center text-lg-left">
+    <div class="row align-items-center">
+      <div class="col-sm-12 text-center">
+        <h2 class="divider-heading">{{ 'Opinions users' | translate }}</h2>
+        <div class="row mt-3">
+          <div class="col-sm-12">
+            <carousel [isAnimated]="true">
+              <slide>
+                <div class="text-center py-5 text-black">
+                  <img src="../../../assets/images/testimonials/el-salitre.png" alt="el-salitre" height="50"
+                    class="mb-3">
+                  <h3>Restaurante El Salitre</h3>
+                  <div class="lead">
+                    <h4>Málaga ({{ 'Spain' | translate }})</h4>
+                    <p class="pl-5 pr-5 font-italic">
+                      "{{ 'Review Restaurant 1' | translate }}"
+                    </p>
+                  </div>
+                </div>
+              </slide>
+              <slide>
+                <div class="text-center py-5 text-black">
+                  <img src="../../../assets/images/testimonials/lapera.png" alt="el-salitre" height="100" class="mb-3">
+                  <h3>Restaurante La Pera</h3>
+                  <div class="lead">
+                    <h4>Málaga ({{ 'Spain' | translate }})</h4>
+                    <p class="pl-5 pr-5 font-italic">
+                      "{{ 'Review Restaurant 2' | translate }}"
+                    </p>
+                  </div>
+                </div>
+              </slide>
+              <slide>
+                <div class="text-center py-5 text-black">
+                  <img src="../../../assets/images/testimonials/chiringuito.png" alt="el-salitre" height="100"
+                    class="mb-3">
+                  <h3>Chiringuito Alonso "El Pionero"</h3>
+                  <div class="lead">
+                    <h4>Torrox ({{ 'Spain' | translate }})</h4>
+                    <p class="pl-5 pr-5 font-italic">
+                      "{{ 'Review Restaurant 3' | translate }}"
+                    </p>
+                  </div>
+                </div>
+              </slide>
+            </carousel>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-gray-dark">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h2 class="divider-heading">{{ 'Talk about us' | translate }}</h2>
+        <div class="row">
+          <div class="col-sm-12">
+            <ul class="list-group list-group-horizontal-xl">
+              <li class="list-group-item">
+                <a target="_blank" href="https://www.youtube.com/watch?v=YNq6c6-Q6nA&ab_channel=EquipoKEMENU">
+                  <img src="../../../assets/images/testimonials/canalsur.png" alt="canalsur" height="80">
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a target="_blank"
+                  href="https://www.europapress.es/andalucia/malaga-00356/noticia-crean-aplicacion-permite-restaurantes-crear-cartas-digitales-ver-movil-20200523125942.html">
+                  <img src="../../../assets/images/testimonials/europapress.png" alt="europapress" height="80">
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a target="_blank"
+                  href="https://www.laopiniondemalaga.es/malaga/2020/05/20/menu-coronavirus-telefono-movil/1166795.html">
+                  <img src="../../../assets/images/testimonials/la-opinion-de-malaga-logo-vector.png"
+                    alt="la-opinion-de-malaga" height="80">
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a target="_blank"
+                  href="https://www.pronto.es/noticias-del-corazon/sorprendente/dos-ingenieros-crean-app-digitalizar-cartas-restaurantes-320733102.html">
+                  <img src="../../../assets/images/testimonials/pronto.png" alt="pronto" height="80">
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a target="_blank"
+                  href="https://www.lavanguardia.com/local/sevilla/20200523/481346293154/coronavirus--crean-una-aplicacion-que-permite-a-restaurantes-hacer-cartas-digitales-para-ver-desde-el-movil.html">
+                  <img src="../../../assets/images/testimonials/vanguardia-logo.png" alt="vanguardia" height="80">
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a target="_blank"
+                  href="https://7tvandalucia.es/malaga/noticias-7-malaga/5-334-21052020-noticias-7-malaga/53682/">
+                  <img src="../../../assets/images/testimonials/logo7TV.png" alt="7tv" height="80">
+                </a>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
