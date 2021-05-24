@@ -1,14 +1,15 @@
-import {Injectable} from '@angular/core';
-import {tap, map} from 'rxjs/operators';
-import {HttpClient} from '@angular/common/http';
-import {environment} from '@environments/environment';
-import {Tokens} from '@models/auth/tokens.model';
-import {Login} from '@models/auth/login.interface';
-import {Register} from '@models/auth/register.interface';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { tap, map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '@environments/environment';
+import { Tokens } from '@models/auth/tokens.model';
+import { Login } from '@models/auth/login.interface';
+import { Register } from '@models/auth/register.interface';
 import jwt_decode from 'jwt-decode';
-import {ForgotPassword} from '@models/auth/forgotPassword.interface';
-import {ChangePassword, ForgotPasswordId} from '@models/auth/changePassword.interface';
+import { ForgotPassword } from '@models/auth/forgotPassword.interface';
+import { ChangePassword, ForgotPasswordId } from '@models/auth/changePassword.interface';
 import { ResetPassword } from '@models/auth/resetPassword.interface';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +20,13 @@ export class AuthenticationService {
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
   private readonly USER_EMAIL = 'USER_EMAIL';
   private readonly USER_ROLE = 'USER_ROLE';
+  isBrowser: boolean;
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    @Inject(PLATFORM_ID) platformId: Object
   ) {
+    this.isBrowser = isPlatformBrowser(platformId);
   }
 
   register(user: Register) {
@@ -32,7 +36,7 @@ export class AuthenticationService {
 
   login(user: Login) {
     return this.httpClient
-      .post(environment.apiBaseUrl + '/login', user, {observe: 'response'})
+      .post(environment.apiBaseUrl + '/login', user, { observe: 'response' })
       .pipe(map(response => {
         const tokens: Tokens = {
           jwt: response.headers.get('Authorization'),
@@ -62,13 +66,15 @@ export class AuthenticationService {
   }
 
   isLoggedIn() {
-    return !!this.getJwtToken();
+    if (this.isBrowser) {
+      return !!this.getJwtToken();
+    }
   }
 
   refreshToken() {
     return this.httpClient.post<any>(environment.apiBaseUrl + '/refresh', {
       refreshToken: this.getRefreshToken()
-    }, {observe: 'response'})
+    }, { observe: 'response' })
       .pipe(tap(response => {
         const tokens: Tokens = {
           jwt: response.headers.get('Authorization'),
@@ -79,23 +85,33 @@ export class AuthenticationService {
   }
 
   getJwtToken() {
-    return localStorage.getItem(this.JWT_TOKEN);
+    if (this.isBrowser) {
+      return localStorage.getItem(this.JWT_TOKEN);
+    }
   }
 
   getUserEmail() {
-    return localStorage.getItem(this.USER_EMAIL);
+    if (this.isBrowser) {
+      return localStorage.getItem(this.USER_EMAIL);
+    }
   }
 
   getUserRole() {
-    return localStorage.getItem(this.USER_ROLE);
+    if (this.isBrowser) {
+      return localStorage.getItem(this.USER_ROLE);
+    }
   }
 
   private getRefreshToken() {
-    return localStorage.getItem(this.REFRESH_TOKEN);
+    if (this.isBrowser) {
+      return localStorage.getItem(this.REFRESH_TOKEN);
+    }
   }
 
   private storeJwtToken(jwt: string) {
-    localStorage.setItem(this.JWT_TOKEN, jwt);
+    if (this.isBrowser) {
+      localStorage.setItem(this.JWT_TOKEN, jwt);
+    }
   }
 
   private storeTokens(tokens: Tokens) {
