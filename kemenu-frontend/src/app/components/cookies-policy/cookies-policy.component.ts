@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-cookies-policy',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CookiesPolicyComponent implements OnInit {
 
-  constructor() { }
+  isBrowser: boolean;
+
+  constructor(@Inject(PLATFORM_ID) platformId: Object) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit() {
   }

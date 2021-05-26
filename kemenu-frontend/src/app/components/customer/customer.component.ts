@@ -32,14 +32,16 @@ export class CustomerComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!Object.is(this.router.routerState.snapshot.url, '/demo')) {
-      this.getDataToBuildMenu();
-      this.menuService.getMenuById(this.shortUrlId)
-        .subscribe((menusSaved: ShowMenu[]) => {
-          this.menusSaved = this.matchAllergens(menusSaved);
-        });
-    } else {
-      this.menusSaved = Demo;
+    if (this.isBrowser) {
+      if (!Object.is(this.router.routerState.snapshot.url, '/demo')) {
+        this.getDataToBuildMenu();
+        this.menuService.getMenuById(this.shortUrlId)
+          .subscribe((menusSaved: ShowMenu[]) => {
+            this.menusSaved = this.matchAllergens(menusSaved);
+          });
+      } else {
+        this.menusSaved = Demo;
+      }
     }
   }
 

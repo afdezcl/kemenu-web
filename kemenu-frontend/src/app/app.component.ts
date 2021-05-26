@@ -19,7 +19,6 @@ export class AppComponent implements OnInit {
 
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
-  public cookieBASE64: string;
   public showCookiesAlert = true;
 
   isBrowser: boolean;
@@ -32,46 +31,46 @@ export class AppComponent implements OnInit {
     @Inject(PLATFORM_ID) platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
+    translate.setDefaultLang('es');
+    translate.use('es');
 
-    if(this.isBrowser) {
+    if (this.isBrowser) {
       translate.setDefaultLang(Utils.getBrowserLang());
       translate.use(Utils.getBrowserLang());
       const navEndEvents$ = this.router.events
-      .pipe(
-        filter(event => event instanceof NavigationEnd)
-      );
-    navEndEvents$.subscribe((event: NavigationEnd) => {
-      gtag('config', 'UA-166680150-1', {
-        page_path: event.urlAfterRedirects
+        .pipe(
+          filter(event => event instanceof NavigationEnd)
+        );
+      navEndEvents$.subscribe((event: NavigationEnd) => {
+        gtag('config', 'UA-166680150-1', {
+          page_path: event.urlAfterRedirects
+        });
       });
-    });
-    } 
-
-
+    }
   }
 
   ngOnInit() {
-    if(this.isBrowser) {
+    if (this.isBrowser) {
       if (this.cookieService.get('show_menu')) {
         localStorage.setItem('COOKIE-SHOW-MENU', this.cookieService.get('show_menu'));
         this.router.navigateByUrl('/show');
       }
-  
+
       if (this.cookieService.get('confirmed_email')) {
         localStorage.setItem('COOKIE-CONFIRMED-EMAIL', this.cookieService.get('confirmed_email'));
         this.cookieService.delete('confirmed_email');
       }
-  
+
       if (this.cookieService.get('forgot_password_email')) {
         localStorage.setItem('FORGOT-PASSWORD-EMAIL', this.cookieService.get('forgot_password_email'));
         this.cookieService.delete('forgot_password_email');
         this.router.navigateByUrl('/changePassword');
       }
-  
+
       if (this.cookieService.get('CookieKemenu')) {
         this.showCookiesAlert = false;
       }
-  
+
       if (localStorage.getItem(this.JWT_TOKEN)) {
         this.checkExpirationToken();
       }
@@ -80,7 +79,7 @@ export class AppComponent implements OnInit {
   }
 
   onActivate() {
-    if(this.isBrowser) {
+    if (this.isBrowser) {
       window.scroll(0, 0);
     }
   }
