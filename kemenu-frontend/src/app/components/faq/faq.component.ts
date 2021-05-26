@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-faq',
@@ -9,9 +10,13 @@ import { TranslateService } from '@ngx-translate/core';
 export class FaqComponent implements OnInit {
 
   faq;
+  isBrowser: boolean;
+
   constructor(
-    private translate: TranslateService
+    private translate: TranslateService,
+    @Inject(PLATFORM_ID) platformId: any
   ) {
+    this.isBrowser = isPlatformBrowser(platformId);
   }
 
   ngOnInit() {
