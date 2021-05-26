@@ -10,7 +10,7 @@ export class CookiesPolicyComponent implements OnInit {
 
   isBrowser: boolean;
 
-  constructor(@Inject(PLATFORM_ID) platformId: Object) {
+  constructor(@Inject(PLATFORM_ID) platformId: any) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 

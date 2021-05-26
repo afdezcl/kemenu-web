@@ -12,7 +12,7 @@ export class TranslateServerLoader implements TranslateLoader {
 
   public getTranslation(lang: string): Observable<any> {
     return new Observable((observer) => {
-      const assets_folder = join(
+      const assetsFolder = join(
         process.cwd(),
         'dist',
         'kemenu-frontend',
@@ -22,7 +22,7 @@ export class TranslateServerLoader implements TranslateLoader {
       );
 
       const jsonData = JSON.parse(
-        fs.readFileSync(`${assets_folder}/${lang}${this.suffix}`, 'utf8')
+        fs.readFileSync(`${assetsFolder}/${lang}${this.suffix}`, 'utf8')
       );
 
       observer.next(jsonData);

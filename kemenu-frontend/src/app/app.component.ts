@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
     private router: Router,
     private cookieService: CookieService,
     private authService: AuthenticationService,
-    @Inject(PLATFORM_ID) platformId: Object
+    @Inject(PLATFORM_ID) platformId: any
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
     translate.setDefaultLang('es');

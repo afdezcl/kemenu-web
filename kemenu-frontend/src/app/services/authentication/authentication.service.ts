@@ -24,7 +24,7 @@ export class AuthenticationService {
 
   constructor(
     private httpClient: HttpClient,
-    @Inject(PLATFORM_ID) platformId: Object
+    @Inject(PLATFORM_ID) platformId: any
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }

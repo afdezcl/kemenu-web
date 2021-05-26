@@ -14,7 +14,7 @@ export class FaqComponent implements OnInit {
 
   constructor(
     private translate: TranslateService,
-    @Inject(PLATFORM_ID) platformId: Object
+    @Inject(PLATFORM_ID) platformId: any
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }

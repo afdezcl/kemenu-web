@@ -20,7 +20,7 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
   changePasswordForm: FormGroup;
   cookieBASE64: string;
   forgotPasswordId: ForgotPasswordId;
-  isBrowser: any;
+  isBrowser: boolean;
 
   constructor(
     private translate: TranslateService,
@@ -28,7 +28,7 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
     private alertService: AlertsService,
     private authService: AuthenticationService,
     private recaptchaV3Service: ReCaptchaV3Service,
-    @Inject(PLATFORM_ID) platformId: Object
+    @Inject(PLATFORM_ID) platformId: any
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }

@@ -227,7 +227,7 @@
                             <overwrite>true</overwrite>
                             <resources>
                                 <resource>
-                                    <directory>${project.parent.basedir}/kemenu-frontend/target/dist/kemenu-frontend
+                                    <directory>${project.parent.basedir}/kemenu-frontend/dist/kemenu-frontend/browser
                                     </directory>
                                     <filtering>true</filtering>
                                 </resource>

@@ -26,7 +26,7 @@ export class CustomerComponent implements OnInit {
   constructor(
     private router: Router,
     private menuService: MenuService,
-    @Inject(PLATFORM_ID) platformId: Object
+    @Inject(PLATFORM_ID) platformId: any
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }

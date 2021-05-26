@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { AlertsService } from '@services/alerts/alerts.service';
 import { TranslateService } from '@ngx-translate/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -14,16 +15,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor(
     private alertService: AlertsService,
     private translate: TranslateService,
-    @Inject(PLATFORM_ID) platformId: Object
-  ) { 
-
+    @Inject(PLATFORM_ID) platformId: any
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
   }
 
   ngOnInit() {
   }
 
   ngAfterViewInit(): void {
-    if(this.isBrowser) {
+    if (this.isBrowser) {
       this.checkVerifyEmail();
     }
   }
