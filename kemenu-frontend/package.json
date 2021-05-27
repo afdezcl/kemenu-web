@@ -14,7 +14,8 @@
     "dev:ssr": "ng run kemenu-frontend:serve-ssr",
     "serve:ssr": "node dist/kemenu-frontend/server/main.js",
     "build:ssr": "ng build --prod && ng run kemenu-frontend:server:production",
-    "prerender": "ng run kemenu-frontend:prerender"
+    "prerender": "ng run kemenu-frontend:prerender",
+    "prerenderdev": "ng run kemenu-frontend:prerenderdev"
   },
   "private": true,
   "dependencies": {

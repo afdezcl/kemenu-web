@@ -170,6 +170,19 @@
           "configurations": {
             "production": {}
           }
+        },
+        "prerenderdev": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "kemenu-frontend:build",
+            "serverTarget": "kemenu-frontend:server",
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {}
+          }
         }
       }
     }},

@@ -48,7 +48,7 @@
               <goal>npm</goal>
             </goals>
             <configuration>
-              <arguments>run prerender</arguments>
+              <arguments>run prerenderdev</arguments>
             </configuration>
           </execution>
 
