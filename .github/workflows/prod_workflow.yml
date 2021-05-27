@@ -41,7 +41,7 @@ jobs:
           npm install kemenu-frontend --prefix ./kemenu-frontend
           npm --prefix kemenu-frontend run lint
           npm --prefix kemenu-frontend run test
-          npm --prefix kemenu-frontend run build
+          npm --prefix kemenu-frontend run prerenderdev
       - name: Test backend
         run: mvn -B clean test package -pl :kemenu-backend
       - name: Run backend
@@ -82,7 +82,7 @@ jobs:
       - name: Build frontend
         run: |
           npm install kemenu-frontend --prefix ./kemenu-frontend
-          npm --prefix kemenu-frontend run build -- --prod
+          npm --prefix kemenu-frontend run prerender
       - name: Create version
         run: |
           APP_RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
