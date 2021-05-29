@@ -41,6 +41,7 @@
     "express": "^4.15.2",
     "jwt-decode": "^3.1.2",
     "ng-recaptcha": "^6.0.2",
+    "ng2-adsense": "^10.0.0",
     "ngx-bootstrap": "^6.2.0",
     "ngx-color-picker": "^10.1.0",
     "ngx-cookie-service": "^10.1.1",
