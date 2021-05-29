@@ -8,6 +8,7 @@ import { Dish } from '@models/menu/dish.model';
 import { AllAllergens, Allergen } from '@models/menu/allergen.model';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import { isPlatformBrowser } from '@angular/common';
+import { Banner } from '@models/banner';
 
 @Component({
   selector: 'app-customer',
@@ -22,6 +23,7 @@ export class CustomerComponent implements OnInit {
   public shortUrlId: string;
   public imageUrl: SafeResourceUrl;
   isBrowser: boolean;
+  banner: Banner;
 
   constructor(
     private router: Router,
@@ -29,6 +31,12 @@ export class CustomerComponent implements OnInit {
     @Inject(PLATFORM_ID) platformId: any
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
+    this.banner = new Banner(
+      'ca-pub-9431323762190837',
+      9196178952,
+      'auto',
+      true
+    );
   }
 
   ngOnInit() {
