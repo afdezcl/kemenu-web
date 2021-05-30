@@ -1,9 +1,9 @@
 <ng-container *ngIf="showAd">
   <ins class="adsbygoogle"
      style="display:block"
-     data-ad-client="banner.adClient"
-     data-ad-slot="banner.adSlot"
-     data-ad-format="banner.adFormat"
-     data-full-width-responsive="banner.fullWidthResponsive">
+     [attr.data-ad-client]="banner.adClient"
+     [attr.data-ad-slot]="banner.adSlot"
+     [attr.data-ad-format]="banner.adFormat"
+     [attr.data-full-width-responsive]="banner.fullWidthResponsive">
    </ins>
 </ng-container>

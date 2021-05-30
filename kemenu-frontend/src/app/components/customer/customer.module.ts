@@ -7,8 +7,6 @@ import { MenuDigitalModule } from '../menu/menu-digital/menu-digital.module';
 import { CustomerRoutingModule } from './customer-routing.module';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BannerModule } from '../banner/banner.module';
-import { AdsenseModule } from 'ng2-adsense';
-
 
 @NgModule({
   imports: [
@@ -19,11 +17,6 @@ import { AdsenseModule } from 'ng2-adsense';
     MenuDigitalModule,
     CustomerRoutingModule,
     TabsModule.forRoot(),
-    AdsenseModule.forRoot({
-      adClient: 'ca-pub-9431323762190837',
-      adSlot: 9196178952,
-      adtest: 'on'
-    }),
   ],
   declarations: [CustomerComponent]
 })
