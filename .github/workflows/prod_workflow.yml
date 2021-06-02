@@ -1,4 +1,4 @@
-name: Kemenu CI
+name: Kemenu CI 2
 
 on: [push]
 
@@ -13,10 +13,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Run docker-compose
         run: docker-compose up -d
-      - name: Set up JDK 15
+      - name: Set up JDK 16
         uses: actions/setup-java@v1
         with:
-          java-version: 15
+          java-version: 16
       - name: Cache maven repository
         uses: actions/cache@v2
         with:
@@ -41,7 +41,7 @@ jobs:
           npm install kemenu-frontend --prefix ./kemenu-frontend
           npm --prefix kemenu-frontend run lint
           npm --prefix kemenu-frontend run test
-          npm --prefix kemenu-frontend run build
+          npm --prefix kemenu-frontend run prerenderdev
       - name: Test backend
         run: mvn -B clean test package -pl :kemenu-backend
       - name: Run backend
@@ -63,10 +63,10 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
-      - name: Set up JDK 15
+      - name: Set up JDK 16
         uses: actions/setup-java@v1
         with:
-          java-version: 15
+          java-version: 16
       - name: Set up Node 14
         uses: actions/setup-node@v2-beta
         with:
@@ -82,7 +82,7 @@ jobs:
       - name: Build frontend
         run: |
           npm install kemenu-frontend --prefix ./kemenu-frontend
-          npm --prefix kemenu-frontend run build -- --prod
+          npm --prefix kemenu-frontend run prerender
       - name: Create version
         run: |
           APP_RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
@@ -141,10 +141,10 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
-      - name: Set up JDK 15
+      - name: Set up JDK 16
         uses: actions/setup-java@v1
         with:
-          java-version: 15
+          java-version: 16
       - name: Create version
         run: |
           APP_RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
@@ -180,10 +180,10 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
-      - name: Set up JDK 15
+      - name: Set up JDK 16
         uses: actions/setup-java@v1
         with:
-          java-version: 15
+          java-version: 16
       - name: Create version
         run: |
           APP_RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)

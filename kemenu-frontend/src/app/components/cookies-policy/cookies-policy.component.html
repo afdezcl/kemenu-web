@@ -22,18 +22,18 @@
 
       <h4 class="text-bold">{{ 'Cookies Page.Title 4' | translate }}</h4>
       <p class="text-muted">{{ 'Cookies Page.Text 4' | translate }}</p>
-      <ul class="text-muted">
+      <ul *ngIf="isBrowser" class="text-muted">
         <li *ngFor="let item of ('Cookies Page.Text 4 list' | translate)">{{ item }}</li>
       </ul>
 
       <h4 class="text-bold">{{ 'Cookies Page.Title 5' | translate }}</h4>
-      <ul class="text-muted">
+      <ul *ngIf="isBrowser" class="text-muted">
         <li *ngFor="let item of ('Cookies Page.Text 5 list' | translate)">{{ item }}</li>
       </ul>
 
       <h4 class="text-bold">{{ 'Cookies Page.Title 6' | translate }}</h4>
       <h6 class="text-bold">Chrome</h6>
-      <ol class="text-muted">
+      <ol *ngIf="isBrowser" class="text-muted">
         <li *ngFor="let item of ('Cookies Page.Text 6 list' | translate)">{{ item }}</li>
       </ol>
       <p class="text-muted">{{ 'Cookies Page.Text 6.1' | translate }} <a
@@ -41,7 +41,7 @@
           target="_blank">http://support.google.com/chrome/answer/95647?hl=es</a> </p>
 
       <h6 class="text-bold">Internet Explorer. Versión 11</h6>
-      <ol class="text-muted">
+      <ol *ngIf="isBrowser" class="text-muted">
         <li *ngFor="let item of ('Cookies Page.Text 7 list' | translate)">{{ item }}</li>
       </ol>
       <p class="text-muted">{{ 'Cookies Page.Text 7.1' | translate }} <a
@@ -50,7 +50,7 @@
       </p>
 
       <h6 class="text-bold">Firefox. Versión 18</h6>
-      <ol class="text-muted">
+      <ol *ngIf="isBrowser" class="text-muted">
         <li *ngFor="let item of ('Cookies Page.Text 8 list' | translate)">{{ item }}</li>
       </ol>
       <p class="text-muted">{{ 'Cookies Page.Text 8.1' | translate }}</p>
@@ -59,7 +59,7 @@
           target="_blank">https://www.mozilla.org/es-ES/privacy/websites/#cookies</a> </p>
 
       <h6 class="text-bold">Safari Versión 5.1</h6>
-      <ol class="text-muted">
+      <ol *ngIf="isBrowser" class="text-muted">
         <li *ngFor="let item of ('Cookies Page.Text 9 list' | translate)">{{ item }}</li>
       </ol>
       <p class="text-muted">{{ 'Cookies Page.Text 9.1' | translate }} <a

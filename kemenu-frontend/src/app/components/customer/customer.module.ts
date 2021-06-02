@@ -6,15 +6,17 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MenuDigitalModule } from '../menu/menu-digital/menu-digital.module';
 import { CustomerRoutingModule } from './customer-routing.module';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { BannerModule } from '../banner/banner.module';
 
 @NgModule({
   imports: [
+    BannerModule,
     CommonModule,
     AccordionModule,
     TranslateModule,
     MenuDigitalModule,
     CustomerRoutingModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
   ],
   declarations: [CustomerComponent]
 })

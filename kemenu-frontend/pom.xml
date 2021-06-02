@@ -3,7 +3,7 @@
   <parent>
     <groupId>com.kemenu</groupId>
     <artifactId>kemenu</artifactId>
-    <version>0.0.238-SNAPSHOT</version>
+    <version>0.0.244-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -14,7 +14,7 @@
       <plugin>
         <groupId>com.github.eirslett</groupId>
         <artifactId>frontend-maven-plugin</artifactId>
-        <version>1.10.3</version>
+        <version>1.12.0</version>
 
         <executions>
           <!-- Install our node and npm version to run npm/node scripts-->
@@ -24,8 +24,8 @@
               <goal>install-node-and-npm</goal>
             </goals>
             <configuration>
-              <nodeVersion>v14.15.1</nodeVersion>
-              <npmVersion>6.14.8</npmVersion>
+              <nodeVersion>v14.17.0</nodeVersion>
+              <npmVersion>6.14.13</npmVersion>
             </configuration>
           </execution>
 
@@ -48,7 +48,7 @@
               <goal>npm</goal>
             </goals>
             <configuration>
-              <arguments>run build</arguments>
+              <arguments>run prerenderdev</arguments>
             </configuration>
           </execution>
 

@@ -8,7 +8,7 @@
   </div>
 </section>
 
-<div class="faq container mt-5 mb-5">
+<div *ngIf="isBrowser" class="faq container mt-5 mb-5">
   <div *ngFor="let questionObject of ('faq' | translate)">
     <accordion class="accordion-custom faq-question" [isAnimated]="true">
       <accordion-group>
