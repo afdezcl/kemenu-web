@@ -20,9 +20,11 @@ Feature: Create a menu
     Then puts "createMenuTest1Section1" as section
     And clicks on CREATE_SECTION
     And clicks on DIGITAL_MENU_COLLAPSE
+    And clicks on DIGITAL_MENU_COLLAPSE
     Then see the section "createMenuTest1Section1" created
     When create a dish "createMenuTest1Section1Dish1" on "createMenuTest1Section1" section
     And get the QR and clicks on menu link
+    And clicks on DIGITAL_MENU_COLLAPSE
     And clicks on DIGITAL_MENU_COLLAPSE
     Then see the section "createMenuTest1Section1" created
     And see the dish "createMenuTest1Section1Dish1" created in section "createMenuTest1Section1"

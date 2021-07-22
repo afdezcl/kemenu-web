@@ -19,7 +19,9 @@ public class UserActions {
 
     private static void clickOn(String xPath, int cont, int sleep) {
         try {
+            Thread.sleep(500);
             click(xPath);
+            Thread.sleep(sleep + 250);
         } catch (StaleElementReferenceException e) {
             if (5 > cont) {
                 try {
@@ -32,6 +34,8 @@ public class UserActions {
             } else {
                 throw e;
             }
+        } catch (InterruptedException interruptedException) {
+            interruptedException.printStackTrace();
         }
     }
 
