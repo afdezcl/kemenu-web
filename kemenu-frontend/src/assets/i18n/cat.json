@@ -218,7 +218,7 @@
 					"_utmb: cookie de Google Analytics que registra l'hora d'arribada a la pàgina web. Caduca als 30 minuts des de l'última actualització.",
                     "_utmc: cookie de Google Analytics utilitzada per a la interoperabilitat amb el codi de seguiment urchin.js. S'elimina en tancar el navegador.",
                     "_utmt: cookie de Google Analytics. Aquesta cookie s'utilitza per a processar el tipus de sol·licitud demanada per l'usuari. Caduca en finalitzar la sessió.",
-					"_utmv: cookie de Google Analytics. Aquesta cookie s'utilitza per a segmentar dades demogràfiques. Caduca en finalitzar la sessió.",		
+					"_utmv: cookie de Google Analytics. Aquesta cookie s'utilitza per a segmentar dades demogràfiques. Caduca en finalitzar la sessió.",
 					"_utmz: cookie de Google Analytics que emmagatzema la font de trànsit o una campanya per a explicar com l'usuari va arribar al lloc web. Caduca als 6 mesos des de l'última actualització."
                    ],
     "Title 6": "COM ELIMINAR LES COOKIES DEL NAVEGADOR",
@@ -325,5 +325,24 @@
       "question": "Com poden veure els clients la carta en el seu mòbil?",
       "answer": "Quan tinguis el codi QR repartit pel teu restaurant, els clients només hauran d'obrir la càmera del seu mòbil i enfocar al codi QR, tot seguit els apareixerà un enllaç amb la carta del teu restaurant. Si no funcionés amb la cambra del mòbil, recomanem descarregar alguna aplicació gratuïta de lector de QR, ja que mòbils d'anys anteriors no permeten llegir el codi QR directament des de la cambra."
     }
-  ]
+  ],
+  "Blog title": "Blog",
+  "blog": [
+    [
+      {
+        "title": "Cat Title",
+        "headerImage": "Cat header image",
+        "htmlBody": "Cat html body"
+      }
+    ],
+    [
+      {
+        "title": "Cat Title2",
+        "headerImage": "Cat header image2",
+        "htmlBody": "Cat html body2"
+      }
+    ]
+  ],
+  "Blog next button": "Següent",
+  "Blog previous button": "Anterior"
 }

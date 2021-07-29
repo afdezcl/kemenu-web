@@ -20,6 +20,10 @@ export const routes: Routes = [
       import('./components/aboutUs/aboutUs.module').then(module => module.AboutUsModule)
   },
   {
+    path: 'blog', loadChildren: () =>
+      import('./components/blog/blog.module').then(module => module.BlogModule)
+  },
+  {
     path: 'menu', loadChildren: () =>
       import('./components/menu/menu.module').then(module => module.MenuModule)
   },

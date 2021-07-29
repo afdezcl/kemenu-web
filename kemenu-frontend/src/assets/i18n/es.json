@@ -325,5 +325,24 @@
       "question": "¿Cómo pueden ver los clientes la carta en su móvil?",
       "answer": "Cuando tengas el código QR repartido por tu restaurante, los clientes solo tendrán que abrir la cámara de su móvil y enfocar al código QR, acto seguido les aparecerá un enlace con la carta de tu restaurante. Si no funcionase con la cámara del móvil, recomendamos descargar alguna aplicación gratuita de lector de QR, ya que móviles de años anteriores no permiten leer el código QR directamente desde la cámara."
     }
-  ]
+  ],
+  "Blog title": "Blog",
+  "blog": [
+    [
+      {
+        "title": "Es Title",
+        "headerImage": "Es header image",
+        "htmlBody": "Es html body"
+      }
+    ],
+    [
+      {
+        "title": "Es Title2",
+        "headerImage": "Es header image2",
+        "htmlBody": "Es html body2"
+      }
+    ]
+  ],
+  "Blog next button": "Siguiente",
+  "Blog previous button": "Anterior"
 }

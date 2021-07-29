@@ -325,5 +325,24 @@
       "question": "How customers can see my restaurant menu?",
       "answer": "When you had the QR code printed and placed around your restaurant, customers would only have to open their mobile camera and read the QR code with it, then they will get a link to the menu of the restaurant. If the camera option doesn't work, we recommend to download and install a free QR code reader application, this is because many older mobiles versions don't allow reading the  QR code with the camera application."
     }
-  ]
+  ],
+  "Blog title": "Blog",
+  "blog": [
+    [
+      {
+        "title": "En Title",
+        "headerImage": "En header image",
+        "htmlBody": "En html body"
+      }
+    ],
+    [
+      {
+        "title": "En Title2",
+        "headerImage": "En header image2",
+        "htmlBody": "En html body2"
+      }
+    ]
+  ],
+  "Blog next button": "Next",
+  "Blog previous button": "Previous"
 }

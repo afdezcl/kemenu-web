@@ -1,0 +1,33 @@
+<section class="hero">
+  <div class="container mb-10">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="hero-heading text-white mb-5">{{ 'Blog title' | translate }}</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container mt-5 mb-5">
+  <div *ngFor="let blogPost of blogPageToShow">
+    {{blogPost.title}}
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <a (click)="previousPage()" class="btn btn-primary navbar-btn">
+        {{ 'Blog previous button' | translate }}
+      </a>
+    </div>
+    <div class="col">
+      <div *ngFor="let blogPageNumber of blogPages">
+        <a [attr.href]="blogPageNumber">{{blogPageNumber}}</a>
+      </div>
+    </div>
+    <div class="col">
+      <a (click)="nextPage()" class="btn btn-primary navbar-btn">
+        {{ 'Blog next button' | translate }}
+      </a>
+    </div>
+  </div>
+</div>
