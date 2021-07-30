@@ -331,18 +331,23 @@
     [
       {
         "title": "Cat Title",
-        "headerImage": "Cat header image",
-        "htmlBody": "Cat html body"
+        "date": "2021-05-15",
+        "headerImage": "../../../assets/images/adrian-fernandez.png",
+        "imageAlt": "Adri",
+        "htmlBody": "Cat html bodybodybodybodybodybodybodybodybodybodybodybodybodybody"
       }
     ],
     [
       {
         "title": "Cat Title2",
-        "headerImage": "Cat header image2",
-        "htmlBody": "Cat html body2"
+        "date": "2021-05-15",
+        "headerImage": "../../../assets/images/adrian-fernandez.png",
+        "imageAlt": "Adri",
+        "htmlBody": "Cat html body2body2body2body2body2body2body2body2body2body2body2body2"
       }
     ]
   ],
   "Blog next button": "Següent",
-  "Blog previous button": "Anterior"
+  "Blog previous button": "Anterior",
+  "Blog continue reading": "Continuar llegint"
 }

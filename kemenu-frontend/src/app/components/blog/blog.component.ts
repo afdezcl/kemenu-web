@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
+import BlogPost from '@models/blog-post/blogPost';
 
 @Component({
   selector: 'app-blog',
@@ -10,7 +11,7 @@ export class BlogComponent implements OnInit {
 
   blog;
   currentPage: number;
-  blogPageToShow;
+  blogPageToShow: BlogPost[];
   blogPages: number[];
 
   constructor(private translate: TranslateService) {

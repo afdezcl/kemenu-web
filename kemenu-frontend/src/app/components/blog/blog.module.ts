@@ -5,6 +5,7 @@ import {AccordionModule} from 'ngx-bootstrap/accordion';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BlogComponent} from './blog.component';
 import {BlogRoutingModule} from './blog-routing.module';
+import {BlogCardModule} from '../blog-card/blog-card.module';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import {BlogRoutingModule} from './blog-routing.module';
     AccordionModule,
     FormsModule,
     ReactiveFormsModule,
-    BlogRoutingModule
+    BlogRoutingModule,
+    BlogCardModule
   ],
   exports: [
     BlogComponent

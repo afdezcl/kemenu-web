@@ -331,18 +331,23 @@
     [
       {
         "title": "En Title",
-        "headerImage": "En header image",
-        "htmlBody": "En html body"
+        "date": "2021-05-15",
+        "headerImage": "../../../assets/images/adrian-fernandez.png",
+        "imageAlt": "Adri",
+        "htmlBody": "En html bodybodybodybodybodybodybodybodybodybodybodybody"
       }
     ],
     [
       {
         "title": "En Title2",
-        "headerImage": "En header image2",
-        "htmlBody": "En html body2"
+        "date": "2021-05-15",
+        "headerImage": "../../../assets/images/adrian-fernandez.png",
+        "imageAlt": "Adri",
+        "htmlBody": "En html body2body2body2body2body2body2body2body2body2body2body2body2body2"
       }
     ]
   ],
   "Blog next button": "Next",
-  "Blog previous button": "Previous"
+  "Blog previous button": "Previous",
+  "Blog continue reading": "Continue reading"
 }
