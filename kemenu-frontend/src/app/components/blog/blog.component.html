@@ -13,21 +13,14 @@
     <app-blog-card [blogPost]="blogPost"></app-blog-card>
   </div>
 
-  <div class="row">
-    <div class="col">
-      <a (click)="previousPage()" class="btn btn-primary navbar-btn">
-        {{ 'Blog previous button' | translate }}
-      </a>
-    </div>
-    <div class="col">
-      <div *ngFor="let blogPageNumber of blogPages">
+  <div class="row mt-4">
+    <div class="col text-center d-flex justify-content-center">
+      <button class="button-pagination" (click)="previousPage()"><</button>
+      <div *ngFor="let blogPageNumber of blogPages" class="mx-3">
         <a [attr.href]="blogPageNumber">{{blogPageNumber}}</a>
       </div>
+      <button class="button-pagination" (click)="nextPage()">></button>
     </div>
-    <div class="col">
-      <a (click)="nextPage()" class="btn btn-primary navbar-btn">
-        {{ 'Blog next button' | translate }}
-      </a>
-    </div>
+
   </div>
 </div>
