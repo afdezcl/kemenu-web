@@ -7,7 +7,7 @@
       <div class="card-body">
         <h3 class="card-title">{{blogPost.title}}</h3>
         <p class="text-muted">{{blogPost.date}}</p>
-        <p class="card-text">{{blogPost.htmlBody | slice:0:300}}...</p>
+        <p class="card-text" [innerHTML]="(blogPost.htmlBody | slice:0:300) + '...'"></p>
         <a routerLink="/blog/{{blogPost.url}}" class="stretched-link">{{ 'Blog continue reading' | translate }}</a>
       </div>
     </div>
