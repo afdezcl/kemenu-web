@@ -4,4 +4,5 @@ export default interface BlogPost {
   headerImage: string;
   imageAlt: string;
   htmlBody: string;
+  url: string;
 }

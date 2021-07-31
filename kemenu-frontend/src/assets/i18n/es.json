@@ -330,15 +330,17 @@
   "blog": [
     [
       {
+        "url": "la-mejor-receta-de-gazpacho",
         "title": "Es Title",
         "date": "2021-05-15",
         "headerImage": "../../../assets/images/adrian-fernandez.png",
         "imageAlt": "Adri",
-        "htmlBody": "Es html bodybodybodybodybodybodybodybodybodybodybodybody"
+        "htmlBody": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur minus a obcaecati nesciunt quae culpa facilis sit, assumenda alias consequatur quod sunt iure vel perferendis voluptas eveniet aliquam earum minima!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur minus a obcaecati nesciunt quae culpa facilis sit, assumenda alias consequatur quod sunt iure vel perferendis voluptas eveniet aliquam earum minima!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur minus a obcaecati nesciunt quae culpa facilis sit, assumenda alias consequatur quod sunt iure vel perferendis voluptas eveniet aliquam earum minima!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur minus a obcaecati nesciunt quae culpa facilis sit, assumenda alias consequatur quod sunt iure vel perferendis voluptas eveniet aliquam earum minima!"
       }
     ],
     [
       {
+        "url": "la-mejor-receta-de-gazpacho-2",
         "title": "Es Title2",
         "date": "2021-05-15",
         "headerImage": "../../../assets/images/adrian-fernandez.png",

@@ -1,11 +1,15 @@
-<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-  <div class="col p-4 d-flex flex-column position-static">
-    <h3 class="mb-0">{{blogPost.title}}</h3>
-    <div class="mb-1 text-muted">{{blogPost.date}}</div>
-    <p class="card-text mb-auto">{{blogPost.htmlBody}}</p>
-    <a href="#" class="stretched-link">{{ 'Blog continue reading' | translate }}</a>
-  </div>
-  <div class="col-auto d-none d-lg-block">
-    <img class="d-lg-block" height="200" width="200" src="{{blogPost.headerImage}}" alt="{{blogPost.imageAlt}}">
+<div class="card mb-3 border rounded shadow-sm">
+  <div class="row no-gutters">
+    <div class="col-md-4 text-center">
+      <img class="m-3 img-fluid" src="{{blogPost.headerImage}}" alt="{{blogPost.imageAlt}}">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h3 class="card-title">{{blogPost.title}}</h3>
+        <p class="text-muted">{{blogPost.date}}</p>
+        <p class="card-text">{{blogPost.htmlBody | slice:0:300}}...</p>
+        <a href="#" class="stretched-link">{{ 'Blog continue reading' | translate }}</a>
+      </div>
+    </div>
   </div>
 </div>

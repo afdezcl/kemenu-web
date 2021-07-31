@@ -9,13 +9,11 @@ import BlogPost from '@models/blog-post/blogPost';
 })
 export class BlogCardComponent implements OnInit {
 
-  @Input() blogPost: BlogPost;
-  shortHtmlBody: string;
+  @Input() blogPost: BlogPost;  
 
   constructor(private translate: TranslateService) {
   }
 
-  ngOnInit() {
-    this.shortHtmlBody = this.blogPost.htmlBody.substring(0, 51) + '...';
+  ngOnInit() {    
   }
 }
