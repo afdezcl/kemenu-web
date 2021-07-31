@@ -24,9 +24,14 @@ export const routes: Routes = [
       import('./components/blog/blog.module').then(module => module.BlogModule)
   },
   {
+    path: 'blog/:blog', loadChildren: () =>
+      import('./components/blog-post/blog-post-routing.module').then(module => module.BlogPostRoutingModule)
+  },
+  {
     path: 'menu', loadChildren: () =>
       import('./components/menu/menu.module').then(module => module.MenuModule)
   },
+  
   {
     path: 'forgotPassword', loadChildren: () =>
       import('./components/forgotPassword/forgotPassword.module').then(module => module.ForgotPasswordModule)

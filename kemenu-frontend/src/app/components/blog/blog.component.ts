@@ -18,12 +18,20 @@ export class BlogComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getPosts();
+    this.onLanguageChange();
+  }
+
+  getPosts() {
     this.translate.get('blog').subscribe(blogPages => {
       this.blog = blogPages;
       this.currentPage = 0;
       this.blogPageToShow = this.blog[this.currentPage];
       this.blogPages = Array(this.blog.length).fill(1).map((x, i) => i + 1);
     });
+  }
+
+  onLanguageChange(){
     this.translate.onLangChange.subscribe((params: LangChangeEvent) => {
       this.blog = params.translations.blog;
       this.currentPage = 0;
