@@ -2,7 +2,7 @@
   <div class="container mb-10">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h1 class="hero-heading text-white mb-5">Hello</h1>
+        <h1 class="hero-heading text-white mb-5">{{blog[0].title}}</h1>
       </div>
     </div>
   </div>
@@ -11,7 +11,13 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1>Hello post</h1>
+      <div class="text-center">
+        <img class="img-fluid" src="{{blog[0].headerImage}}" alt="{{blog[0].imageAlt}}">
+      </div>
+      <div class="text-left my-5 pb-5">
+        <small class="text-muted">{{blog[0].date}}</small>
+        <p>{{blog[0].htmlBody}}</p>
+      </div>
     </div>
   </div>
 </div>

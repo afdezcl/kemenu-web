@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
@@ -8,15 +9,22 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class BlogPostComponent implements OnInit {
 
-  @Input() title: string;
-  @Input() date: string;
-  @Input() headerImage: string;
-  @Input() htmlBody: string;
+  blog;
 
-  constructor(private translate: TranslateService) {
-  }
+  constructor(
+    private translate: TranslateService,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.getPost();
+  }
 
+  getPost() {
+    let urlPost = this.activatedRoute.snapshot.paramMap.get('blog');    
+    this.translate.get('blog').subscribe(blogPages => {      
+      this.blog = blogPages.filter(blog => blog[0].url === urlPost)[0];
+      console.log(this.blog[0]);
+    });
   }
 }
