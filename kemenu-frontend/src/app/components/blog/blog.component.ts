@@ -31,7 +31,7 @@ export class BlogComponent implements OnInit {
     });
   }
 
-  onLanguageChange(){
+  onLanguageChange() {
     this.translate.onLangChange.subscribe((params: LangChangeEvent) => {
       this.blog = params.translations.blog;
       this.currentPage = 0;

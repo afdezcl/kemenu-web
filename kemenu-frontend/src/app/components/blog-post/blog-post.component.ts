@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
@@ -11,20 +11,24 @@ export class BlogPostComponent implements OnInit {
 
   blog;
 
-  constructor(
-    private translate: TranslateService,
-    private activatedRoute: ActivatedRoute
-  ) { }
+  constructor(private translate: TranslateService, private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.getPost();
   }
 
   getPost() {
-    let urlPost = this.activatedRoute.snapshot.paramMap.get('blog');    
-    this.translate.get('blog').subscribe(blogPages => {      
-      this.blog = blogPages.filter(blog => blog[0].url === urlPost)[0];
-      console.log(this.blog[0]);
+    const urlPost = this.activatedRoute.snapshot.paramMap.get('blog');
+    this.translate.get('blog').subscribe(blogPages => {
+      for (const blogPage of blogPages) {
+        for (const blogPost of blogPage) {
+          if (blogPost.url === urlPost) {
+            this.blog = blogPost;
+            return;
+          }
+        }
+      }
     });
   }
 }

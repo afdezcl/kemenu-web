@@ -9,11 +9,11 @@ import BlogPost from '@models/blog-post/blogPost';
 })
 export class BlogCardComponent implements OnInit {
 
-  @Input() blogPost: BlogPost;  
+  @Input() blogPost: BlogPost;
 
   constructor(private translate: TranslateService) {
   }
 
-  ngOnInit() {    
+  ngOnInit() {
   }
 }

@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
 export const routes: Routes = [
-
   {
     path: '', loadChildren: () =>
       import('./components/home/home.module').then(module => module.HomeModule)
@@ -31,7 +30,6 @@ export const routes: Routes = [
     path: 'menu', loadChildren: () =>
       import('./components/menu/menu.module').then(module => module.MenuModule)
   },
-  
   {
     path: 'forgotPassword', loadChildren: () =>
       import('./components/forgotPassword/forgotPassword.module').then(module => module.ForgotPasswordModule)
@@ -63,15 +61,14 @@ export const routes: Routes = [
   {
     path: '**', redirectTo: ''
   }
-
 ];
-
 
 @NgModule({
   declarations: [],
   imports: [RouterModule.forRoot(routes, {
     initialNavigation: 'enabled'
-})],
+  })],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
