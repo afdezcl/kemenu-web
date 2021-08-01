@@ -95,13 +95,19 @@ class WebConfig implements WebMvcConfigurer {
         try {
             file = new ClassPathResource("public" + File.separator + "blog").getFile();
             String[] names = file.list();
+            if (names != null) {
+                log.info("Found blog routes: {}", (Object) names);
 
-            for(String name : names)
-            {
-                if (new File(file.getAbsolutePath() + "/" + name).isDirectory())
-                {
-                    registry.addViewController("/blog/" + name).setViewName("forward:/blog/" + name +"/index.html");
+                for (String name : names) {
+                    if (new File(file.getAbsolutePath() + File.separator + name).isDirectory()) {
+                        String routeName = "/blog/" + name;
+                        String forwardRoute = "forward:/blog/" + name + "/index.html";
+                        log.info("Adding {} route to forward {}", routeName, forwardRoute);
+                        registry.addViewController(routeName).setViewName(forwardRoute);
+                    }
                 }
+            } else {
+                log.info("Blog routes not found");
             }
         } catch (IOException e) {
             e.printStackTrace();
