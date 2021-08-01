@@ -1,0 +1,26 @@
+<section class="hero">
+  <div class="container mb-10">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="hero-heading text-white mb-5">{{ 'Blog title' | translate }}</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container mt-5 mb-5">
+  <div *ngFor="let blogPost of blogPageToShow">
+    <app-blog-card [blogPost]="blogPost"></app-blog-card>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col text-center d-flex justify-content-center">
+      <button class="button-pagination" (click)="previousPage()"><</button>
+      <div *ngFor="let blogPageNumber of blogPages" class="mx-3">
+        <a [attr.href]="blogPageNumber">{{blogPageNumber}}</a>
+      </div>
+      <button class="button-pagination" (click)="nextPage()">></button>
+    </div>
+
+  </div>
+</div>

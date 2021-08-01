@@ -1,0 +1,15 @@
+<div class="card mb-3 border rounded shadow-sm">
+  <div class="row no-gutters">
+    <div class="col-md-4 text-center">
+      <img class="m-3 img-fluid" src="{{blogPost.headerImage}}" alt="{{blogPost.imageAlt}}">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h3 class="card-title">{{blogPost.title}}</h3>
+        <p class="text-muted">{{blogPost.date}}</p>
+        <div class="card-text" [innerHTML]="(blogPost.htmlBody | slice:0:300) + '...'"></div>
+        <a routerLink="/blog/{{blogPost.url}}" class="stretched-link">{{ 'Blog continue reading' | translate }}</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,10 +14,13 @@
         <ul class="navbar-nav ml-auto">
           <!-- Link-->
           <li class="nav-item">
-            <a (click)="collapseNav()" [routerLink]="['']" class="nav-link active">{{ 'Home' | translate }}</a>
+            <a (click)="collapseNav()" [routerLink]="['']" class="nav-link">{{ 'Home' | translate }}</a>
           </li>
           <li class="nav-item bottom-separator">
             <a (click)="collapseNav()" [routerLink]="['/aboutUs']" class="nav-link">{{ 'AboutUs' | translate }}</a>
+          </li>
+          <li class="nav-item bottom-separator">
+            <a (click)="collapseNav()" [routerLink]="['/blog']" class="nav-link">{{ 'Blog title' | translate }}</a>
           </li>
           <li class="nav-item bottom-separator">
             <a (click)="collapseNav()" [routerLink]="['/faq']" class="nav-link">{{ 'Faq title' | translate }}</a>
@@ -42,7 +45,7 @@
               <a (click)="changeLanguage('es'); collapseNav()" class="dropdown-item pointer-cursor"
                 role="menuitem">{{ 'Spanish' | translate }}</a>
                 <a (click)="changeLanguage('cat'); collapseNav()" class="dropdown-item pointer-cursor"
-                role="menuitem">{{ 'Catalan' | translate }}</a>  
+                role="menuitem">{{ 'Catalan' | translate }}</a>
             </div>
           </li>
           <li class="nav-item">
