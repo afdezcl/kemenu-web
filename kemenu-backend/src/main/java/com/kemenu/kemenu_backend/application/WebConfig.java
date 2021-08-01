@@ -17,7 +17,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -27,6 +28,7 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.invoke.MethodHandles;
 
 @Slf4j
 @Configuration
@@ -61,18 +63,20 @@ class WebConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    CommandLineRunner initAdminUser(CustomerRepository repository, PasswordEncoder passwordEncoder, ConfirmedEmailRepository confirmedEmailRepository) {
+    CommandLineRunner initAdminUser(CustomerRepository repository, PasswordEncoder passwordEncoder,
+                                    ConfirmedEmailRepository confirmedEmailRepository) {
         return args -> repository.findByEmail(adminUsername)
-                .ifPresentOrElse(
-                        c -> log.info("Admin user already created"),
-                        () -> {
-                            repository.save(new Customer(adminUsername, passwordEncoder.encode(adminPassword), Customer.Role.ADMIN, "adminBusiness"));
-                            ConfirmedEmail confirmedEmail = new ConfirmedEmail(adminUsername);
-                            confirmedEmail.confirm();
-                            confirmedEmailRepository.save(confirmedEmail);
-                            log.info("Admin user created");
-                        }
-                );
+            .ifPresentOrElse(
+                c -> log.info("Admin user already created"),
+                () -> {
+                    repository.save(
+                        new Customer(adminUsername, passwordEncoder.encode(adminPassword), Customer.Role.ADMIN, "adminBusiness"));
+                    ConfirmedEmail confirmedEmail = new ConfirmedEmail(adminUsername);
+                    confirmedEmail.confirm();
+                    confirmedEmailRepository.save(confirmedEmail);
+                    log.info("Admin user created");
+                }
+            );
     }
 
     @Bean
@@ -91,23 +95,18 @@ class WebConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/blog").setViewName("forward:/blog/index.html");
 
-        File file;
         try {
-            file = new ClassPathResource("public" + File.separator + "blog").getFile();
-            String[] names = file.list();
-            if (names != null) {
-                log.info("Found blog routes: {}", (Object) names);
+            ClassLoader classLoader = MethodHandles.lookup().getClass().getClassLoader();
+            PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(classLoader);
+            Resource[] resources = resolver.getResources("classpath:public/blog/*");
 
-                for (String name : names) {
-                    if (new File(file.getAbsolutePath() + File.separator + name).isDirectory()) {
-                        String routeName = "/blog/" + name;
-                        String forwardRoute = "forward:/blog/" + name + "/index.html";
-                        log.info("Adding {} route to forward {}", routeName, forwardRoute);
-                        registry.addViewController(routeName).setViewName(forwardRoute);
-                    }
+            for (Resource resource : resources) {
+                if (new File(resource.getURI()).isDirectory()) {
+                    String routeName = "/blog/" + resource.getFilename();
+                    String forwardRoute = "forward:/blog/" + resource.getFilename() + "/index.html";
+                    log.info("Adding {} route to forward {}", routeName, forwardRoute);
+                    registry.addViewController(routeName).setViewName(forwardRoute);
                 }
-            } else {
-                log.info("Blog routes not found");
             }
         } catch (IOException e) {
             e.printStackTrace();
