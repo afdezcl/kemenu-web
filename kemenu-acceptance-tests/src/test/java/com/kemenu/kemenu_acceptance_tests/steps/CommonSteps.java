@@ -14,7 +14,12 @@ public class CommonSteps {
 
     @Given("A user visits {}")
     public void aUserVisits(WebPage webPage) {
-        chromeTestRule.getChrome().get(webPage.url());
+        try {
+            Thread.sleep(1000);
+            chromeTestRule.getChrome().get(webPage.url());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @When("clicks on {}")
