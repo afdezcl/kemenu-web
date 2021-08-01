@@ -17,8 +17,7 @@ public class AngularRoutesController {
             "/changePassword",
             "/aboutUs",
             "/profile/**",
-            "/contact",
-            "/blog/**"
+            "/contact"
         })
     public String forwardAngularPaths() {
         return "forward:/index.html";

@@ -17,11 +17,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+
+import java.io.File;
+import java.io.IOException;
 
 @Slf4j
 @Configuration
@@ -80,5 +85,26 @@ class WebConfig implements WebMvcConfigurer {
     @Bean
     WebClient webClient() {
         return WebClient.builder().build();
+    }
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/blog").setViewName("forward:/blog/index.html");
+
+        File file;
+        try {
+            file = new ClassPathResource("public" + File.separator + "blog").getFile();
+            String[] names = file.list();
+
+            for(String name : names)
+            {
+                if (new File(file.getAbsolutePath() + "/" + name).isDirectory())
+                {
+                    registry.addViewController("/blog/" + name).setViewName("forward:/blog/" + name +"/index.html");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
