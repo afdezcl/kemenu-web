@@ -104,7 +104,7 @@ class WebConfig implements WebMvcConfigurer {
                 if (new File(resource.getURI()).isDirectory()) {
                     String routeName = "/blog/" + resource.getFilename();
                     String forwardRoute = "forward:/blog/" + resource.getFilename() + "/index.html";
-                    log.info("Adding {} route to forward {}", routeName, forwardRoute);
+                    log.info("Adding {} route to {}", routeName, forwardRoute);
                     registry.addViewController(routeName).setViewName(forwardRoute);
                 }
             }
