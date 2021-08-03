@@ -8,9 +8,9 @@
   </div>
 </section>
 
-<div class="container">
+<div class="my-5 mx-md-5 mx-3">
   <div class="row">
-    <div class="col">
+    <div class="col-12 col-md-9">
       <div class="text-center">
         <img class="img-fluid" src="{{blog.headerImage}}" alt="{{blog.imageAlt}}">
       </div>
@@ -19,5 +19,9 @@
         <div [innerHTML]="blog.htmlBody"></div>
       </div>
     </div>
+    <div class="d-none d-sm-block d-sm-none d-md-block col-md-3">
+      <app-blog-recent-posts></app-blog-recent-posts>
+    </div>
   </div>
 </div>
+
