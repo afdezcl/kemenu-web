@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BlogComponent} from './blog.component';
 import {BlogRoutingModule} from './blog-routing.module';
 import {BlogCardModule} from '../blog-card/blog-card.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import {BlogCardModule} from '../blog-card/blog-card.module';
     FormsModule,
     ReactiveFormsModule,
     BlogRoutingModule,
-    BlogCardModule
+    BlogCardModule,
+    RouterModule
   ],
   exports: [
     BlogComponent
