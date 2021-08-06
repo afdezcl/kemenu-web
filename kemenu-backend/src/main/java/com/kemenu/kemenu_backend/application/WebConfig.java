@@ -17,18 +17,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
-
-import java.io.File;
-import java.io.IOException;
-import java.lang.invoke.MethodHandles;
 
 @Slf4j
 @Configuration
@@ -94,22 +88,6 @@ class WebConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/blog").setViewName("forward:/blog/index.html");
-
-        try {
-            ClassLoader classLoader = MethodHandles.lookup().getClass().getClassLoader();
-            PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(classLoader);
-            Resource[] resources = resolver.getResources("classpath:public/blog/*");
-
-            for (Resource resource : resources) {
-                if (new File(resource.getURI()).isDirectory()) {
-                    String routeName = "/blog/" + resource.getFilename();
-                    String forwardRoute = "forward:/blog/" + resource.getFilename() + "/index.html";
-                    log.info("Adding {} route to {}", routeName, forwardRoute);
-                    registry.addViewController(routeName).setViewName(forwardRoute);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        registry.addViewController("/blog/comida-para-llevar").setViewName("forward:/blog/comida-para-llevar/index.html");
     }
 }
