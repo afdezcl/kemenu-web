@@ -24,7 +24,7 @@ export const routes: Routes = [
   },
   {
     path: 'blog/:blog', loadChildren: () =>
-      import('./components/blog-post/blog-post-routing.module').then(module => module.BlogPostRoutingModule)
+      import('./components/blog-post/blog-post.module').then(module => module.BlogPostModule)
   },
   {
     path: 'menu', loadChildren: () =>

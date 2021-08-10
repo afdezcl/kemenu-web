@@ -1,0 +1,13 @@
+<div class="card mb-3 border rounded shadow-sm pointer" (click)="navigateToPost()">
+  <div class="row no-gutters">
+    <div class="col-md-4 text-center">
+      <img class="m-md-3 img-fluid" src="{{blogPost.headerImage}}" alt="{{blogPost.imageAlt}}">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <p class="card-title">{{blogPost.title | slice:0:20}}</p>
+        <p class="text-muted">{{blogPost.date}}</p>
+      </div>
+    </div>
+  </div>
+</div>  

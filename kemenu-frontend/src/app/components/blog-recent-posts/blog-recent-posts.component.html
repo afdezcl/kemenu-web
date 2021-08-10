@@ -1,0 +1,4 @@
+<h5 class="font-weight-bold">Posts recientes</h5>
+<div *ngFor="let blogPost of blogPageToShow">
+  <app-card-recent-post [blogPost]="blogPost"></app-card-recent-post>
+</div>
