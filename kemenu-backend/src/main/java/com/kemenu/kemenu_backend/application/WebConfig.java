@@ -89,5 +89,6 @@ class WebConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/blog").setViewName("forward:/blog/index.html");
         registry.addViewController("/blog/comida-para-llevar").setViewName("forward:/blog/comida-para-llevar/index.html");
+        registry.addViewController("/blog/pagar-en-restaurantes-con-bizum").setViewName("forward:/blog/pagar-en-restaurantes-con-bizum/index.html");
     }
 }
