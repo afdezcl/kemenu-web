@@ -3,6 +3,8 @@ Feature: Create a menu
 
   Scenario: A customer register and account and create a digital menu
     Given A user visits REGISTER
+    And clicks on LANGUAGES
+    And clicks on ENGLISH_OR_INGLES
     When fill the register form with "createMenuTest1@example.com" as email
     And clicks on SIGN_UP
     Then a "success" growl appears

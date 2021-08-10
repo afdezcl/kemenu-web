@@ -15,7 +15,9 @@ public enum Button {
     SAVE_MENU_BUTTON("//input[@type = 'submit' and @value = 'Save']"),
     DIGITAL_MENU_COLLAPSE("//button[@type = 'submit' and contains(@class, 'menu-digital-title')]"),
     LOG_OUT("//a[contains(@class,'nav-link') and text() = 'Log out']"),
-    ENTER_THE_MENU("//h6[text() = 'Click to enter the menu']");
+    ENTER_THE_MENU("//h6[text() = 'Click to enter the menu']"),
+    LANGUAGES("//a[contains(@id, 'languages')]"),
+    ENGLISH_OR_INGLES("//a[text() = 'English' or text() = 'Inglés']");
 
     private final String xPath;
 }
