@@ -66,7 +66,7 @@ Kemenu web application, for menu management written in Java and Angular.
 # Stack
 
 * Angular 11 + Bootstrap
-* Java 15 + Spring Boot
+* Java 16 + Spring Boot
 * MongoDB
 * Docker
 
@@ -76,3 +76,9 @@ A branch must be named following this convention:
 
 * Start with KEM-[ISSUE_NUMBER]_[SHORT_DESCRIPTION]
 * For example: `KEM-9_login_page`
+
+# How to put a post
+
+1. Put a route in `routes.txt` in `kemenu-frontend` in a new line.
+2. Put the post in all of the languages (in spanish).
+3. Go to `WebConfig.java` line 89 and add new controller line.
