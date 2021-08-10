@@ -10,11 +10,11 @@ import { CardRecentPostComponent } from './card-recent-post/card-recent-post.com
     TranslateModule
   ],
   declarations: [
-    BlogRecentPostsComponent, 
+    BlogRecentPostsComponent,
     CardRecentPostComponent
   ],
   exports: [
     BlogRecentPostsComponent
-  ]  
+  ]
 })
 export class BlogRecentPostsModule { }

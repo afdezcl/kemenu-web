@@ -18,7 +18,7 @@ export class CardRecentPostComponent implements OnInit {
   }
 
   navigateToPost() {
-    this.router.navigateByUrl(`/blog/${this.blogPost.url}`)
+    this.router.navigateByUrl(`/blog/${this.blogPost.url}`);
   }
 
 }

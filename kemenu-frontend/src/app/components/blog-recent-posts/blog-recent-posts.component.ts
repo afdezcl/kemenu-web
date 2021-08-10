@@ -11,7 +11,7 @@ export class BlogRecentPostsComponent implements OnInit {
 
   blogPageToShow: BlogPost[];
   private readonly MAXIMUM_POSTS = 5;
-  
+
   constructor(private translate: TranslateService) { }
 
   ngOnInit() {
