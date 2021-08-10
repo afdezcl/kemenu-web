@@ -4,7 +4,10 @@ import { BlogComponent } from './blog.component';
 
 export const routes: Routes = [
   {
-    path: '', component: BlogComponent
+    path: '', component: BlogComponent,
+    children: [
+      {path: 'page/:pageNumber', component: BlogComponent}
+    ]
   }
 ];
 

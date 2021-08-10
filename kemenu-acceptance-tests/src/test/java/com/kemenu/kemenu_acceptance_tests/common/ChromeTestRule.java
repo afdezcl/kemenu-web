@@ -19,7 +19,7 @@ public class ChromeTestRule extends ExternalResource {
     chromeOptions.setHeadless(true);
     chromeOptions.addArguments("--lang=en");
     chrome = new ChromeDriver(chromeOptions);
-    chrome.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+    chrome.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
   }
 
   @Override

@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
+import { Component, OnInit } from '@angular/core';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import BlogPost from '@models/blog-post/blogPost';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blog',
@@ -14,18 +15,38 @@ export class BlogComponent implements OnInit {
   blogPageToShow: BlogPost[];
   blogPages: number[];
 
-  constructor(private translate: TranslateService) {
-  }
+  constructor(
+    private translate: TranslateService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-    this.getPosts();
-    this.onLanguageChange();
+    this.checkPage();
   }
 
-  getPosts() {
+  checkPage() {
+    let page;
+    this.router.events.subscribe(() => {
+      const url = this.router.url;
+
+      if (url.includes('blog') && !url.includes('page')) {
+        this.getPosts(0);
+      } else {
+        page = url.substr(url.length - 1);
+        this.getPosts(page - 1);
+        window.scrollTo(0, 0);
+      }
+    });
+
+    if (!page) {
+      this.getPosts(0);
+    }
+  }
+
+  getPosts(page) {
     this.translate.get('blog').subscribe(blogPages => {
       this.blog = blogPages;
-      this.currentPage = 0;
+      this.currentPage = page;
       this.blogPageToShow = this.blog[this.currentPage];
       this.blogPages = Array(this.blog.length).fill(1).map((x, i) => i + 1);
     });
@@ -43,14 +64,17 @@ export class BlogComponent implements OnInit {
   nextPage() {
     if (this.currentPage < this.blogPages.length - 1) {
       this.currentPage = this.currentPage + 1;
-      this.blogPageToShow = this.blog[this.currentPage];
+      this.router.navigateByUrl(`blog/page/${this.currentPage + 1}`);
+      window.scrollTo(0, 0);
     }
   }
 
   previousPage() {
     if (this.currentPage > 0) {
       this.currentPage = this.currentPage - 1;
-      this.blogPageToShow = this.blog[this.currentPage];
+      this.router.navigateByUrl(`blog/page/${this.currentPage + 1}`);
+      window.scrollTo(0, 0);
     }
   }
+
 }
