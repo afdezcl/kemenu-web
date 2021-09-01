@@ -90,5 +90,6 @@ class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/blog").setViewName("forward:/blog/index.html");
         registry.addViewController("/blog/comida-para-llevar").setViewName("forward:/blog/comida-para-llevar/index.html");
         registry.addViewController("/blog/pagar-en-restaurantes-con-bizum").setViewName("forward:/blog/pagar-en-restaurantes-con-bizum/index.html");
+        registry.addViewController("/blog/como-crear-carta-digital-con-kemenu").setViewName("forward:/blog/como-crear-carta-digital-con-kemenu/index.html");
     }
 }
