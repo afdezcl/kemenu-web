@@ -48,6 +48,7 @@ export class CustomerComponent implements OnInit {
             this.menusSaved = this.matchAllergens(menusSaved);
           });
       } else {
+        console.log("HOLA");
         this.menusSaved = Demo;
       }
     }

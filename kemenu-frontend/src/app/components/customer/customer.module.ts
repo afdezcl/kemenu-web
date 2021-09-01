@@ -7,6 +7,7 @@ import { MenuDigitalModule } from '../menu/menu-digital/menu-digital.module';
 import { CustomerRoutingModule } from './customer-routing.module';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BannerModule } from '../banner/banner.module';
+import { CustomerListComponent } from './customer-list/customer-list.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { BannerModule } from '../banner/banner.module';
     CustomerRoutingModule,
     TabsModule.forRoot(),
   ],
-  declarations: [CustomerComponent]
+  declarations: [CustomerComponent, CustomerListComponent]
 })
 export class CustomerModule { }
