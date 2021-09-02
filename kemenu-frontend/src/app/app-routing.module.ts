@@ -51,6 +51,10 @@ export const routes: Routes = [
       import('./components/customer/customer.module').then(module => module.CustomerModule)
   },
   {
+    path: 'show/:id', loadChildren: () =>
+      import('./components/customer/customer.module').then(module => module.CustomerModule)
+  },
+  {
     path: 'contact', loadChildren: () =>
       import('./components/contact/contact.module').then(module => module.ContactModule)
   },
