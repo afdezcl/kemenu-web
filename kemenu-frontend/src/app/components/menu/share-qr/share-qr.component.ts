@@ -25,7 +25,7 @@ export class ShareQrComponent implements OnInit {
 
   ngOnInit() {
     this.getQRcode();
-    this.url = environment.apiBaseUrl + '/show/' + this.shortUrlId;
+    this.url = environment.nodeBaseUrl + '/show/' + this.shortUrlId;
   }
 
   getQRcode() {

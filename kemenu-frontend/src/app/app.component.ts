@@ -51,11 +51,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     if (this.isBrowser) {
-      if (this.cookieService.get('show_menu')) {
-        localStorage.setItem('COOKIE-SHOW-MENU', this.cookieService.get('show_menu'));
-        this.router.navigateByUrl('/show');
-      }
-
       if (this.cookieService.get('confirmed_email')) {
         localStorage.setItem('COOKIE-CONFIRMED-EMAIL', this.cookieService.get('confirmed_email'));
         this.cookieService.delete('confirmed_email');

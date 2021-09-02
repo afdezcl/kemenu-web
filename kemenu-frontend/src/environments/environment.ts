@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiBaseUrl: 'http://localhost:8085',
+  nodeBaseUrl: 'http://localhost:4200',
   recaptchaToken: '6LdTMfUUAAAAANcZwb0O_jEXYMElMEAyYdHmnKeM',
   contactForm: {
     serviceId: 'service_m5nqzgm',
