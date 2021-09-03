@@ -12,7 +12,7 @@ app:
   recaptcha:
     public: 6LdTMfUUAAAAANcZwb0O_jEXYMElMEAyYdHmnKeM
     secret: ${RECAPTCHA_TOKEN}
-  cors: http://localhost:8085, http://localhost:4200
+  cors: http://localhost:8085, http://localhost:4201
   admin:
     username: admin@example.com
     password: adminPassword
