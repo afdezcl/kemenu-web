@@ -11,7 +11,7 @@
     "update": "ncu",
     "updatenow": "ncu -u",
     "extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/*.json --clean --sort --format namespaced-json",
-    "dev:ssr": "ng run kemenu-frontend:serve-ssr",
+    "dev:ssr": "ng build && ng run kemenu-frontend:server",
     "serve:ssr": "node dist/kemenu-frontend/server/main.js",
     "build:ssr": "ng build --prod && ng run kemenu-frontend:server:production",
     "prerender": "ng run kemenu-frontend:prerender --routes-file routes.txt",
