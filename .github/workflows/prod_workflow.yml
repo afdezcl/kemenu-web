@@ -133,7 +133,7 @@ jobs:
           ssh -p ${{ secrets.PORT }} ${{ secrets.USERNAME }}@${{ secrets.HOST }} 'bash -s' < $KILL_NODE_SH
       - name: Move node server folder
         run: |
-          rsync -avzhe 'ssh -p ${{ secrets.PORT }}' ${{ github.workspace }}/kemenu-frontend/dist/kemenu-frontend/server ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~
+          rsync -avz 'ssh -p ${{ secrets.PORT }}' ${{ github.workspace }}/kemenu-frontend/dist/kemenu-frontend/server ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~
       - name: Launch node app
         run: |
           ssh -f -p ${{ secrets.PORT }} ${{ secrets.USERNAME }}@${{ secrets.HOST }} "~/node/bin/node server/main.js"
