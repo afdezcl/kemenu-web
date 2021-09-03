@@ -52,8 +52,8 @@ jobs:
       - name: Run frontend
         run: |
           cd ${{ github.workspace }}/kemenu-frontend && node dist/kemenu-frontend/server/main.js &
-      #- name: Run acceptance tests
-      #  run: mvn -B clean test -pl :kemenu-acceptance-tests
+      - name: Run acceptance tests
+        run: mvn -B clean test -pl :kemenu-acceptance-tests
 
   kemenu_deploy:
     name: Deploy on server
