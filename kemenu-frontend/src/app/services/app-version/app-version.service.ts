@@ -13,6 +13,6 @@ export class AppVersionService {
   }
 
   getVersionApp() {
-    return this.httpClient.get(environment.apiBaseUrl + '/app/version');
+    return this.httpClient.get(environment.apiBaseUrl + '/public/app/version');
   }
 }

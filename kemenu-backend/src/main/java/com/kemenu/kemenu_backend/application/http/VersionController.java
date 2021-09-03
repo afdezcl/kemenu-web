@@ -12,7 +12,7 @@ public class VersionController {
     @Value("${app.version}")
     private String appVersion;
 
-    @GetMapping("/app/version")
+    @GetMapping("/public/app/version")
     public VersionResponse getVersion() {
         return new VersionResponse(appVersion.replace("-SNAPSHOT", ""));
     }

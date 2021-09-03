@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class RedirectToIndexController implements ErrorController {
-    @RequestMapping(value = "/error")
+    @RequestMapping(value = "/public/error")
     public String error() {
         return "forward:/index.html";
     }

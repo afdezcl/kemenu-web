@@ -68,7 +68,7 @@ class LoginIntegrationTest extends KemenuIntegrationTest {
         Mockito.when(recaptchaMock.isValid(customerRequest.getRecaptchaToken())).thenReturn(true);
 
         webTestClient
-                .post().uri("/register")
+                .post().uri("/public/register")
                 .body(Mono.just(customerRequest), CustomerRequest.class)
                 .exchange()
                 .expectStatus().isOk()
@@ -125,39 +125,5 @@ class LoginIntegrationTest extends KemenuIntegrationTest {
                 .header("Authorization", generateExpiredAccessToken())
                 .exchange()
                 .expectStatus().isUnauthorized();
-    }
-
-    @Test
-    void anAdminLoginThenCanUseProtectedResources() {
-        JsonNode loginRequest = LoginRequestHelper.adminLogin(adminUsername, adminPassword, mapper);
-        Mockito.when(recaptchaMock.isValid(loginRequest.get("recaptchaToken").asText())).thenReturn(true);
-
-        HttpHeaders responseHeaders = webTestClient
-                .post().uri("/login")
-                .body(Mono.just(loginRequest), JsonNode.class)
-                .exchange()
-                .expectStatus().isOk()
-                .expectHeader().exists("Authorization")
-                .expectHeader().exists("JWT-Refresh-Token")
-                .expectBody().returnResult().getResponseHeaders();
-
-        String accessToken = responseHeaders.get("Authorization").get(0);
-
-        webTestClient
-                .get().uri("/admin/v1/customers")
-                .header("Authorization", accessToken)
-                .exchange()
-                .expectStatus().isOk()
-                .expectBody()
-                .jsonPath("$[0].email").isEqualTo(adminUsername);
-    }
-
-    @Test
-    void aCustomerWithUserRoleTryToUseAdminResourceAndGetAnUnauthorizedResponse() {
-        webTestClient
-                .get().uri("/admin/v1/customers")
-                .header("Authorization", generateAccessToken())
-                .exchange()
-                .expectStatus().isForbidden();
     }
 }

@@ -19,7 +19,7 @@ public class RefreshTokenController {
 
     private final JWTService jwtService;
 
-    @PostMapping("/refresh")
+    @PostMapping("/public/refresh")
     public ResponseEntity<String> refreshToken(@RequestBody @Valid RefreshTokenRequest refreshTokenRequest) {
         try {
             DecodedJWT decodedJWT = jwtService.decodeRefreshToken(refreshTokenRequest.getRefreshToken());

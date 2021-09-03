@@ -14,7 +14,7 @@ class RefreshTokenIntegrationTest extends KemenuIntegrationTest {
     @Test
     void aCustomerCouldRefreshAToken() {
         HttpHeaders headers = webTestClient
-                .post().uri("/refresh")
+                .post().uri("/public/refresh")
                 .body(Mono.just(RefreshTokenRequestHelper.from(generateRefreshToken())), RefreshTokenRequest.class)
                 .exchange()
                 .expectStatus().isOk()
@@ -35,7 +35,7 @@ class RefreshTokenIntegrationTest extends KemenuIntegrationTest {
     @Test
     void whenACustomerTryToRefreshTokenWithAnExpiredOneShouldFails() {
         webTestClient
-                .post().uri("/refresh")
+                .post().uri("/public/refresh")
                 .body(Mono.just(RefreshTokenRequestHelper.from(generateExpiredRefreshToken())), RefreshTokenRequest.class)
                 .exchange()
                 .expectStatus().isUnauthorized()

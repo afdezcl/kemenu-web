@@ -31,7 +31,7 @@ export class AuthenticationService {
 
   register(user: Register) {
     return this.httpClient
-      .post(environment.apiBaseUrl + '/register', user);
+      .post(environment.apiBaseUrl + '/public/register', user);
   }
 
   login(user: Login) {
@@ -72,7 +72,7 @@ export class AuthenticationService {
   }
 
   refreshToken() {
-    return this.httpClient.post<any>(environment.apiBaseUrl + '/refresh', {
+    return this.httpClient.post<any>(environment.apiBaseUrl + '/public/refresh', {
       refreshToken: this.getRefreshToken()
     }, { observe: 'response' })
       .pipe(tap(response => {

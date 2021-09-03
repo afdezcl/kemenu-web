@@ -21,7 +21,7 @@ public class RegisterController {
     private final Recaptcha recaptcha;
     private final CustomerService customerService;
 
-    @PostMapping("/register")
+    @PostMapping("/public/register")
     public ResponseEntity<UUID> create(@RequestBody @Valid CustomerRequest customerRequest) {
         try {
             if (recaptcha.isValid(customerRequest.getRecaptchaToken())) {

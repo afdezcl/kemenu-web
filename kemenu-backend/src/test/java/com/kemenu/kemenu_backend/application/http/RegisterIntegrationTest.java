@@ -36,7 +36,7 @@ class RegisterIntegrationTest extends KemenuIntegrationTest {
         Mockito.when(recaptchaMock.isValid(customerRequest.getRecaptchaToken())).thenReturn(false);
 
         webTestClient
-                .post().uri("/register")
+                .post().uri("/public/register")
                 .body(Mono.just(customerRequest), CustomerRequest.class)
                 .exchange()
                 .expectStatus().isEqualTo(HttpStatus.TOO_MANY_REQUESTS);
@@ -50,7 +50,7 @@ class RegisterIntegrationTest extends KemenuIntegrationTest {
         Mockito.when(recaptchaMock.isValid(customerRequest.getRecaptchaToken())).thenReturn(true);
 
         webTestClient
-                .post().uri("/register")
+                .post().uri("/public/register")
                 .body(Mono.just(customerRequest), CustomerRequest.class)
                 .exchange()
                 .expectStatus().isOk();
@@ -60,7 +60,7 @@ class RegisterIntegrationTest extends KemenuIntegrationTest {
                 .build();
 
         webTestClient
-                .post().uri("/register")
+                .post().uri("/public/register")
                 .body(Mono.just(requestWithUpperCaseEmail), CustomerRequest.class)
                 .exchange()
                 .expectStatus().isEqualTo(HttpStatus.CONFLICT);
@@ -74,7 +74,7 @@ class RegisterIntegrationTest extends KemenuIntegrationTest {
         Mockito.when(recaptchaMock.isValid(customerRequest.getRecaptchaToken())).thenReturn(true);
 
         webTestClient
-                .post().uri("/register")
+                .post().uri("/public/register")
                 .body(Mono.just(customerRequest), CustomerRequest.class)
                 .exchange()
                 .expectStatus().isBadRequest();
