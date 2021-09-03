@@ -136,7 +136,7 @@ jobs:
           rsync -avz ${{ github.workspace }}/kemenu-frontend/dist ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~
       - name: Launch node app
         run: |
-          ssh -f -p ${{ secrets.PORT }} ${{ secrets.USERNAME }}@${{ secrets.HOST }} "~/node/bin/node server/main.js"
+          ssh -f -p ${{ secrets.PORT }} ${{ secrets.USERNAME }}@${{ secrets.HOST }} "~/node/bin/node dist/kemenu-frontend/server/main.js"
       - name: Commit version
         run: |
           git config --global user.name 'Nicolas Vargas Ortega'
