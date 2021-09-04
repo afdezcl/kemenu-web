@@ -89,7 +89,7 @@ class LoginIntegrationTest extends KemenuIntegrationTest {
         webTestClient
                 .get().uri("/public/confirm/email/" + notConfirmedEmail.getId())
                 .exchange()
-                .expectStatus().isOk();
+                .expectHeader().exists("Set-Cookie");
 
         ConfirmedEmail confirmedEmail = confirmedEmailRepository.findByEmail(customer.getEmail()).get();
         assertTrue(confirmedEmail.isConfirmed());

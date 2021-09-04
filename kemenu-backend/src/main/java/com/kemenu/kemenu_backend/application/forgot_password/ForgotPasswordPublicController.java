@@ -5,14 +5,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kemenu.kemenu_backend.domain.model.CustomerRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Base64;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -24,8 +27,13 @@ class ForgotPasswordPublicController {
     private final CustomerRepository customerRepository;
     private final ObjectMapper mapper;
 
+    @Value("${app.cors}")
+    private List<String> allowedOrigins;
+
     @GetMapping("/{forgotPasswordId}")
-    String confirm(@PathVariable String forgotPasswordId, HttpServletResponse response) {
+    RedirectView confirm(@PathVariable String forgotPasswordId, HttpServletResponse response) {
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl(allowedOrigins.get(1));
         return forgotPasswordRepository.findById(forgotPasswordId)
                 .map(forgotPassword -> customerRepository.findByEmail(forgotPassword.getEmail())
                         .map(customer -> {
@@ -34,11 +42,11 @@ class ForgotPasswordPublicController {
                                 String jsonResponse = mapper.writeValueAsString(forgotPasswordResponse);
                                 Cookie cookie = new Cookie("forgot_password_email", Base64.getEncoder().encodeToString(jsonResponse.getBytes()));
                                 response.addCookie(cookie);
-                                return "forward:/index.html";
+                                return redirectView;
                             } catch (JsonProcessingException e) {
-                                return "forward:/index.html";
+                                return redirectView;
                             }
-                        }).orElseGet(() -> "forward:/index.html")
-                ).orElseGet(() -> "forward:/index.html");
+                        }).orElse(redirectView)
+                ).orElse(redirectView);
     }
 }
