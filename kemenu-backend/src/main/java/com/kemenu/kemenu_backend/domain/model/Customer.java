@@ -119,6 +119,14 @@ public class Customer implements GrantedAuthority {
         changeMarketing(MarketingInfo.builder().newsletterStatus(NewsletterStatus.OLD).build());
     }
 
+    public boolean isOld() {
+        return marketingInfo.getNewsletterStatus().isOld();
+    }
+
+    public boolean isEmpty() {
+        return firstBusiness().isEmpty();
+    }
+
     @Override
     public String getAuthority() {
         return "ROLE_" + role;

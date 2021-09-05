@@ -1,5 +1,6 @@
 package com.kemenu.kemenu_backend.domain.model;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ShortUrlRepository {
@@ -8,4 +9,6 @@ public interface ShortUrlRepository {
     Optional<ShortUrl> findById(String id);
 
     Optional<ShortUrl> findByCustomerEmail(String customerEmail);
+
+    List<ShortUrl> findAllInCustomerEmails(List<String> customerEmails);
 }
