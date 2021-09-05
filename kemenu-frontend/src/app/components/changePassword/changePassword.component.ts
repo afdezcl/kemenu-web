@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AlertsService } from '@services/alerts/alerts.service';
 import { Subscription } from 'rxjs';
@@ -6,7 +6,7 @@ import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { AuthenticationService } from '@services/authentication/authentication.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ChangePassword, ForgotPasswordId } from '@models/auth/changePassword.interface';
-import { isPlatformBrowser } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-change-password',
@@ -18,9 +18,7 @@ import { isPlatformBrowser } from '@angular/common';
 export class ChangePasswordComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   changePasswordForm: FormGroup;
-  cookieBASE64: string;
   forgotPasswordId: ForgotPasswordId;
-  isBrowser: boolean;
 
   constructor(
     private translate: TranslateService,
@@ -28,26 +26,22 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
     private alertService: AlertsService,
     private authService: AuthenticationService,
     private recaptchaV3Service: ReCaptchaV3Service,
-    @Inject(PLATFORM_ID) platformId: any
+    private route: ActivatedRoute
   ) {
-    this.isBrowser = isPlatformBrowser(platformId);
   }
 
   ngOnInit() {
-    this.getDataToBuildForgotPassword();
+    this.route.params.subscribe(params => {
+      const forgotPasswordEmail = params['id'];
+      if (forgotPasswordEmail) {
+        const forgotPasswordIdString: string = decodeURI(forgotPasswordEmail);
+        this.forgotPasswordId = JSON.parse(forgotPasswordIdString);
+      }
+    });
     this.changePasswordForm = this.formBuilder.group({
       password: ['', [Validators.required, Validators.minLength(8)]],
       repeatedPassword: ['']
     }, { validators: this.checkPasswords });
-  }
-
-  getDataToBuildForgotPassword() {
-    if (this.isBrowser) {
-      this.cookieBASE64 = localStorage.getItem('FORGOT-PASSWORD-EMAIL');
-      const forgotPasswordIdString: string = atob(this.cookieBASE64);
-      localStorage.setItem('forgotPasswordId', forgotPasswordIdString);
-      this.forgotPasswordId = JSON.parse(forgotPasswordIdString);
-    }
   }
 
   get form() {

@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
-import java.util.Base64;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Slf4j
@@ -31,7 +30,7 @@ class ForgotPasswordPublicController {
     private List<String> allowedOrigins;
 
     @GetMapping("/{forgotPasswordId}")
-    RedirectView confirm(@PathVariable String forgotPasswordId, HttpServletResponse response) {
+    RedirectView confirm(@PathVariable String forgotPasswordId) {
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl(allowedOrigins.get(1));
         return forgotPasswordRepository.findById(forgotPasswordId)
@@ -40,8 +39,8 @@ class ForgotPasswordPublicController {
                             try {
                                 ForgotPasswordResponse forgotPasswordResponse = new ForgotPasswordResponse(forgotPasswordId, customer.getEmail());
                                 String jsonResponse = mapper.writeValueAsString(forgotPasswordResponse);
-                                Cookie cookie = new Cookie("forgot_password_email", Base64.getEncoder().encodeToString(jsonResponse.getBytes()));
-                                response.addCookie(cookie);
+                                String jsonEncoded = URLEncoder.encode(jsonResponse, StandardCharsets.UTF_8);
+                                redirectView.setUrl(allowedOrigins.get(1) + "/changePassword/" + jsonEncoded);
                                 return redirectView;
                             } catch (JsonProcessingException e) {
                                 return redirectView;

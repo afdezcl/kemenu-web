@@ -56,12 +56,6 @@ export class AppComponent implements OnInit {
         this.cookieService.delete('confirmed_email');
       }
 
-      if (this.cookieService.get('forgot_password_email')) {
-        localStorage.setItem('FORGOT-PASSWORD-EMAIL', this.cookieService.get('forgot_password_email'));
-        this.cookieService.delete('forgot_password_email');
-        this.router.navigateByUrl('/changePassword');
-      }
-
       if (this.cookieService.get('CookieKemenu')) {
         this.showCookiesAlert = false;
       }

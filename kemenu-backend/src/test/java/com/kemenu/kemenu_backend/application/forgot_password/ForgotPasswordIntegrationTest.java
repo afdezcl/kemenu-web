@@ -14,12 +14,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpHeaders;
 import reactor.core.publisher.Mono;
 
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.time.Instant;
-import java.util.Base64;
+import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -47,6 +50,9 @@ class ForgotPasswordIntegrationTest extends KemenuIntegrationTest {
 
     @Autowired
     private ObjectMapper mapper;
+
+    @Value("${app.cors}")
+    private List<String> allowedOrigins;
 
     @BeforeEach
     void initAll() {
@@ -80,10 +86,11 @@ class ForgotPasswordIntegrationTest extends KemenuIntegrationTest {
         HttpHeaders headers = webTestClient
                 .get().uri("/public/forgot/password/" + forgotPasswordId)
                 .exchange()
-                //.expectStatus().isOk()
-                .expectHeader().exists("Set-Cookie")
+                .expectStatus().isFound()
                 .expectBody().returnResult().getResponseHeaders();
-        var forgotPasswordResponse = mapper.readValue(new String(Base64.getDecoder().decode(headers.get("Set-Cookie").get(0).replace("forgot_password_email=", ""))), ForgotPasswordResponse.class);
+        String jsonEncoded = headers.get("Location").get(0).replace(allowedOrigins.get(1) + "/changePassword/", "");
+        String jsonDecoded = URLDecoder.decode(jsonEncoded, StandardCharsets.UTF_8);
+        var forgotPasswordResponse = mapper.readValue(jsonDecoded, ForgotPasswordResponse.class);
 
         assertEquals(customer.getEmail(), forgotPasswordResponse.getEmail());
         assertEquals(forgotPasswordId, forgotPasswordResponse.getId());

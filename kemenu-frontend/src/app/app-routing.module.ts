@@ -35,7 +35,7 @@ export const routes: Routes = [
       import('./components/forgotPassword/forgotPassword.module').then(module => module.ForgotPasswordModule)
   },
   {
-    path: 'changePassword', loadChildren: () =>
+    path: 'changePassword/:id', loadChildren: () =>
       import('./components/changePassword/changePassword.module').then(module => module.ChangePasswordModule)
   },
   {
