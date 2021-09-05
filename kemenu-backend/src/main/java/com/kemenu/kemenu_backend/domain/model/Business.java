@@ -60,6 +60,7 @@ public class Business {
         return menus.isEmpty() ||
             name.equalsIgnoreCase("test") ||
             name.equalsIgnoreCase("prueba") ||
+            name.equalsIgnoreCase("XEBRE") ||
             (menus.size() == 1 && menus.get(0).getSections().isEmpty()) ||
             (menus.size() == 1 && menus.get(0).getSections().size() == 1 && menus.get(0).getSections().get(0).getDishes().isEmpty()) ||
             (menus.size() == 1 && menus.get(0).getSections().size() == 1 && menus.get(0).getSections().get(0).getDishes().size() == 1);
