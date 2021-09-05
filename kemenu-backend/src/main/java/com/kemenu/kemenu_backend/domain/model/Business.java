@@ -55,4 +55,13 @@ public class Business {
     public void deleteMenu(String menuId) {
         menus.removeIf(menu -> menu.getId().equals(menuId));
     }
+
+    public boolean isEmpty() {
+        return menus.isEmpty() ||
+            name.equalsIgnoreCase("test") ||
+            name.equalsIgnoreCase("prueba") ||
+            (menus.size() == 1 && menus.get(0).getSections().isEmpty()) ||
+            (menus.size() == 1 && menus.get(0).getSections().size() == 1 && menus.get(0).getSections().get(0).getDishes().isEmpty()) ||
+            (menus.size() == 1 && menus.get(0).getSections().size() == 1 && menus.get(0).getSections().get(0).getDishes().size() == 1);
+    }
 }

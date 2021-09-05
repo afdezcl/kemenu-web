@@ -48,7 +48,7 @@ export const routes: Routes = [
   },
   {
     path: 'show', loadChildren: () =>
-      import('./components/customer/customer.module').then(module => module.CustomerModule)
+      import('./components/ranking/ranking.module').then(module => module.RankingModule)
   },
   {
     path: 'show/:id', loadChildren: () =>

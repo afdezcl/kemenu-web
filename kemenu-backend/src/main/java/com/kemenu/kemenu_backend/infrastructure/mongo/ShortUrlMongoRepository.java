@@ -5,6 +5,7 @@ import com.kemenu.kemenu_backend.domain.model.ShortUrlRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -26,5 +27,10 @@ class ShortUrlMongoRepository implements ShortUrlRepository {
     @Override
     public Optional<ShortUrl> findByCustomerEmail(String customerEmail) {
         return springMongoRepository.findByCustomerEmail(customerEmail);
+    }
+
+    @Override
+    public List<ShortUrl> findAllInCustomerEmails(List<String> customerEmails) {
+        return springMongoRepository.findAllByCustomerEmailIn(customerEmails);
     }
 }
