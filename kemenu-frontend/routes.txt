@@ -1,3 +1,4 @@
 /blog/comida-para-llevar
 /blog/pagar-en-restaurantes-con-bizum
 /blog/como-crear-carta-digital-con-kemenu
+/blog/ley-de-informacion-alimentaria-alergenos
