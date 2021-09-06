@@ -55,6 +55,7 @@ class MenuPublicController {
             .filter(tuple -> tuple.getRight().isPresent())
             .map(tuple -> Tuple.of(tuple.getLeft(), tuple.getRight().get()))
             .map(tuple -> new ShortUrlResponse(tuple.getLeft().getId(), tuple.getRight().firstBusiness().getName()))
+            .distinct()
             .toList();
 
         return ResponseEntity.ok(response);

@@ -56,10 +56,59 @@ public class Business {
         menus.removeIf(menu -> menu.getId().equals(menuId));
     }
 
+    // TODO: Refactor me pls
     public boolean isEmpty() {
         return menus.isEmpty() ||
             name.equalsIgnoreCase("test") ||
             name.equalsIgnoreCase("prueba") ||
+            name.equalsIgnoreCase("Chiringo") ||
+            name.equalsIgnoreCase("Arica Restobar") ||
+            name.equalsIgnoreCase("Mikuna") ||
+            name.equalsIgnoreCase("complejo 5ta") ||
+            name.equalsIgnoreCase("Kenel") ||
+            name.equalsIgnoreCase("UCA") ||
+            name.equalsIgnoreCase("leonbra") ||
+            name.equalsIgnoreCase("CERVECERÍA EL GALLO") ||
+            name.equalsIgnoreCase("Azorin Computer") ||
+            name.equalsIgnoreCase("Probando restaurante") ||
+            name.equalsIgnoreCase("Donama") ||
+            name.equalsIgnoreCase("EL BEYUSCO") ||
+            name.equalsIgnoreCase("BODEGA L'ESSÈNCIA") ||
+            name.equalsIgnoreCase("ES MAL PAS") ||
+            name.equalsIgnoreCase("The Daily Industrial") ||
+            name.equalsIgnoreCase("Bistrot Ovni") ||
+            name.equalsIgnoreCase("Golf Playa") ||
+            name.equalsIgnoreCase("Chill Burgers") ||
+            name.equalsIgnoreCase("Sumapaz Restaurant") ||
+            name.equalsIgnoreCase("Chiringuito de verano la estación") ||
+            name.equalsIgnoreCase("La Posada") ||
+            name.equalsIgnoreCase("Colors") ||
+            name.equalsIgnoreCase("CAFETERIA TOLCAN") ||
+            name.equalsIgnoreCase("Soleo Marbella") ||
+            name.equalsIgnoreCase("Restaurante El Levante") ||
+            name.equalsIgnoreCase("Marenostrum") ||
+            name.equalsIgnoreCase("La Niña Vilassar") ||
+            name.equalsIgnoreCase("Diversus LH") ||
+            name.equalsIgnoreCase("El dorado") ||
+            name.equalsIgnoreCase("Delirium Beer") ||
+            name.equalsIgnoreCase("Bar El Olivar") ||
+            name.equalsIgnoreCase("Mezzaluna") ||
+            name.equalsIgnoreCase("Mi Restaurante") ||
+            name.equalsIgnoreCase("Ustrukue Jatetxea") ||
+            name.equalsIgnoreCase("la Cuina") ||
+            name.equalsIgnoreCase("Bar cachola") ||
+            name.equalsIgnoreCase("Restaurante Couder") ||
+            name.equalsIgnoreCase("SL DEEP") ||
+            name.equalsIgnoreCase("Bar restaurante los Tito's") ||
+            name.equalsIgnoreCase("PARRILLADA MONTOTO") ||
+            name.equalsIgnoreCase("Restaurante La frontera") ||
+            name.equalsIgnoreCase("Restaurant Laredo Bar") ||
+            name.equalsIgnoreCase("Rikisimo express") ||
+            name.equalsIgnoreCase("Barrio Perú") ||
+            name.equalsIgnoreCase("Trattoria italiana") ||
+            name.equalsIgnoreCase("Valentino's") ||
+            name.equalsIgnoreCase("ESPOCH") ||
+            name.equalsIgnoreCase("Terrazza del Mare") ||
             name.contains("XEBRE") ||
             (menus.size() == 1 && menus.get(0).getSections().isEmpty()) ||
             (menus.size() == 1 && menus.get(0).getSections().size() == 1 && menus.get(0).getSections().get(0).getDishes().isEmpty()) ||
