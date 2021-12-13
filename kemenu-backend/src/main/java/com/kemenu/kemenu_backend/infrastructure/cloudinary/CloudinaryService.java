@@ -46,6 +46,11 @@ public class CloudinaryService {
         if (lastDashIndex == -1) {
             return "";
         }
+        // Get from database
+        // if null get from cloudinary and store in database
+        //    1. Download image from cloudinary programmatically
+        //    2. store as binary GRIDFs in mongodb
+        // otherwise return
         String imageName = url.substring(lastDashIndex + 1);
         return cloudinary.url().transformation(new Transformation().quality("auto").fetchFormat("auto")).secure(true).generate(imageName);
     }
