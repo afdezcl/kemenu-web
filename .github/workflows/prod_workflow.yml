@@ -13,17 +13,12 @@ jobs:
         uses: actions/checkout@v2
       - name: Run docker-compose
         run: docker-compose up -d
-      - name: Set up JDK 16
-        uses: actions/setup-java@v1
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
         with:
-          java-version: 16
-      - name: Cache maven repository
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
+          distribution: 'temurin'
+          java-version: 17
+          cache: 'maven'
       - name: Set up Node 14
         uses: actions/setup-node@v2-beta
         with:
@@ -66,10 +61,12 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
-      - name: Set up JDK 16
-        uses: actions/setup-java@v1
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
         with:
-          java-version: 16
+          distribution: 'temurin'
+          java-version: 17
+          cache: 'maven'
       - name: Create version
         run: |
           APP_RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
@@ -81,13 +78,6 @@ jobs:
           echo "JAR_NAME=$JAR_NAME$APP_RELEASE_VERSION-SNAPSHOT.jar" >> $GITHUB_ENV
           echo "RELEASE VERSION: ${APP_RELEASE_VERSION}-SNAPSHOT"
           mvn -B --batch-mode release:update-versions -DdevelopmentVersion=$APP_RELEASE_VERSION-SNAPSHOT
-      - name: Cache maven repository
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
       - name: Build backend
         run: mvn -B clean package -Dmaven.test.skip=true -pl :kemenu-backend
       - name: Prepare SSH Keys
