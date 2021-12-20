@@ -24,6 +24,7 @@ jobs:
         with:
           node-version: '14'
           cache: 'npm'
+          cache-dependency-path: kemenu-frontend/package-lock.json
       - name: Lint & Test frontend
         run: |
           npm install kemenu-frontend --prefix ./kemenu-frontend
@@ -115,6 +116,7 @@ jobs:
         with:
           node-version: '14'
           cache: 'npm'
+          cache-dependency-path: kemenu-frontend/package-lock.json
       - name: Build frontend
         run: |
           npm install kemenu-frontend --prefix ./kemenu-frontend

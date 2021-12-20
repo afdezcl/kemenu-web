@@ -13,7 +13,6 @@
         <logstash-logback-encoder.version>6.4</logstash-logback-encoder.version>
         <java-jwt.version>3.11.0</java-jwt.version>
         <zxing.version>3.4.1</zxing.version>
-        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
         <sentry.version>1.7.30</sentry.version>
         <sendgrid.version>4.6.4</sendgrid.version>
         <vertx.version>3.9.4</vertx.version>
@@ -90,18 +89,6 @@
         </dependency>
 
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${springfox-swagger2.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${springfox-swagger2.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>io.sentry</groupId>
             <artifactId>sentry-logback</artifactId>
             <version>${sentry.version}</version>
@@ -149,12 +136,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
