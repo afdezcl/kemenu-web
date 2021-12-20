@@ -15,39 +15,23 @@ Kemenu web application, for menu management written in Java and Angular.
 
 :warning: Before running the frontend you have to compile the frontend:
 
-`mvn -U clean install -pl :kemenu-frontend`
-
-1. Hot reloading to work with frontend:
-
-`bash kemenu-frontend/npm --prefix kemenu-frontend run start`
-
-2. For use ng command:
-
-`bash kemenu-frontend/npm --prefix kemenu-frontend run ng <NG_COMMAND>`
-
-3. For install a npm package:
-
-`bash kemenu-frontend/npm --prefix kemenu-frontend install <PACKAGE>`
+`npm install`
 
 ## Build project
 
-1. Build entire project
-
-`mvn -U clean install -pl :kemenu-frontend && mvn -U clean test package -pl :kemenu-backend`
-
-2. Compile frontend
-
-`mvn -U clean install -pl :kemenu-frontend`
-
-3. Compile backend
+1. Build backend project
 
 `mvn -U clean test package -pl :kemenu-backend`
 
-4. Launch acceptance tests
+2. Compile frontend
+
+`npm --prefix kemenu-frontend run dev:ssr`
+
+3. Launch acceptance tests
 
 `mvn -U clean test -pl :kemenu-acceptance-tests`
 
-5. How to launch docker
+4. How to launch docker
 
 `docker-compose up`
 
@@ -63,10 +47,14 @@ Kemenu web application, for menu management written in Java and Angular.
 6. Put in `VM options` the following `-Dspring.profiles.active=dev`
 7. Click on `Apply` and then in `OK`
 
+## How to run frontend
+
+`cd ./kemenu-frontend && node dist/kemenu-frontend/server/main.js &`
+
 # Stack
 
 * Angular 11 + Bootstrap
-* Java 16 + Spring Boot
+* Java 17 + Spring Boot
 * MongoDB
 * Docker
 

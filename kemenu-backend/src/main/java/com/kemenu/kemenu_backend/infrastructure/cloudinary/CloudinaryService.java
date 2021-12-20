@@ -52,7 +52,11 @@ public class CloudinaryService {
         //    2. store as binary GRIDFs in mongodb
         // otherwise return
         String imageName = url.substring(lastDashIndex + 1);
-        return cloudinary.url().transformation(new Transformation().quality("auto").fetchFormat("auto")).secure(true).generate(imageName);
+        return cloudinary
+            .url()
+            .transformation(new Transformation().quality("auto").fetchFormat("auto"))
+            .secure(true)
+            .generate(imageName);
     }
 
     private String uploadToCloudinary(byte[] image) {
