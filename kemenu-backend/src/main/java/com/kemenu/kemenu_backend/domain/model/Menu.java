@@ -3,6 +3,7 @@ package com.kemenu.kemenu_backend.domain.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
+import org.bson.types.Binary;
 import org.springframework.data.annotation.PersistenceConstructor;
 
 import javax.money.CurrencyUnit;
@@ -24,6 +25,8 @@ public class Menu {
     CurrencyUnit currency = Monetary.getCurrency("EUR");
     @Builder.Default
     String name = "";
+    @Builder.Default
+    Binary image = null;
 
     public CurrencyUnit getCurrency() {
         return isNull(currency) ? Monetary.getCurrency("EUR") : currency; // TODO: This should be in migrations?

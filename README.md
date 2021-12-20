@@ -49,7 +49,7 @@ Kemenu web application, for menu management written in Java and Angular.
 
 ## How to run frontend
 
-`cd ./kemenu-frontend && node dist/kemenu-frontend/server/main.js &`
+`cd ./kemenu-frontend && node dist/kemenu-frontend/server/main.js`
 
 # Stack
 
