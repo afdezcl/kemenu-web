@@ -31,7 +31,7 @@ public class DishMapper {
                         .formattedPrice(moneyFormatter.withSymbol(d.getPrice(), currency, locale))
                         .allergens(d.getAllergens().stream().map(a -> AllergenData.builder().id(a.getId()).name(a.getName()).build()).collect(toList()))
                         .imageUrl(!StringUtils.isEmpty(d.getImageUrl()) ? cloudinaryService.getOptimizedUrl(d.getImageUrl()) : "")
-                        .available(isNull(d.getAvailable()) ? true : d.getAvailable()) // TODO: Refactor when frontend use it
+                        .available(isNull(d.getAvailable()) || d.getAvailable()) // TODO: Refactor when frontend use it
                         .build()
                 )
                 .collect(toList());
