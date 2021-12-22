@@ -4,7 +4,6 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
-import org.bson.types.Binary;
 import org.springframework.data.annotation.PersistenceConstructor;
 
 import java.math.BigDecimal;
@@ -20,5 +19,4 @@ public class Dish {
     List<Allergen> allergens;
     String imageUrl;
     Boolean available;
-    Binary image;
 }
