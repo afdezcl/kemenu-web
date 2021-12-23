@@ -18,6 +18,7 @@ app:
     key: dev_test
     secret: dev_test
     cloudname: dev_test
+  sentry: sentry
 
 spring:
   data:

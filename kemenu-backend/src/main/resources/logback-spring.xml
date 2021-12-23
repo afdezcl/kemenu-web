@@ -29,20 +29,13 @@
         <appender-ref ref="FILE"/>
     </appender>
 
+    <springProperty scope="context" name="sentryDSN" source="app.sentry"/>
+
     <appender name="Sentry" class="io.sentry.logback.SentryAppender">
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>WARN</level>
-        </filter>
-        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
-            <providers>
-                <logLevel/>
-                <timestamp/>
-                <message/>
-                <loggerName/>
-                <threadName/>
-                <stackTrace/>
-            </providers>
-        </encoder>
+        <options>
+            <!-- NOTE: Replace the test DSN below with YOUR OWN DSN to see the events from this app in your Sentry project/dashboard -->
+            <dsn>https://examplePublicKey@o0.ingest.sentry.io/0</dsn>
+        </options>
     </appender>
 
     <springProfile name="dev | test">

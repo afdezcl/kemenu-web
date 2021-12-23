@@ -21,6 +21,7 @@ app:
     key: ${CLOUDINARY_KEY}
     secret: ${CLOUDINARY_SECRET}
     cloudname: ${CLOUDINARY_CLOUDNAME}
+  sentry: ${SENTRY_DSN}
 
 spring:
   jmx:
