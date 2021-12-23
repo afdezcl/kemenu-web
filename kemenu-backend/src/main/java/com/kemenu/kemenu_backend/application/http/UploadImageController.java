@@ -25,11 +25,11 @@ class UploadImageController {
                                                     @PathVariable String email,
                                                     @RequestParam("file") MultipartFile file) {
         return introspectiveService
-                .doCallOnMe(
-                        token,
-                        email,
-                        () -> ResponseEntity.ok(new UploadImageResponse(cloudinaryService.upload(file)))
-                );
+            .doCallOnMe(
+                token,
+                email,
+                () -> ResponseEntity.ok(new UploadImageResponse(cloudinaryService.upload(file)))
+            );
     }
 
     @PostMapping("/customer/{email}/upload/image/resized")
@@ -37,10 +37,10 @@ class UploadImageController {
                                                            @PathVariable String email,
                                                            @RequestParam("file") MultipartFile file) {
         return introspectiveService
-                .doCallOnMe(
-                        token,
-                        email,
-                        () -> ResponseEntity.ok(new UploadImageResponse(cloudinaryService.uploadResized(file)))
-                );
+            .doCallOnMe(
+                token,
+                email,
+                () -> ResponseEntity.ok(new UploadImageResponse(cloudinaryService.uploadResized(file)))
+            );
     }
 }

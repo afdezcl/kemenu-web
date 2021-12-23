@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import org.bson.types.Binary;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,6 +19,6 @@ public class Photo {
     private Binary content;
     private String contentType;
     private long size;
-    @CreatedDate
+    private String cloudinaryUrl;
     private Instant createdAt;
 }

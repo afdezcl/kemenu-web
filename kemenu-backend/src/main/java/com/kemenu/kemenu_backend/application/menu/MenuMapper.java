@@ -8,7 +8,7 @@ import com.kemenu.kemenu_backend.domain.model.ShortUrlRepository;
 import com.kemenu.kemenu_backend.infrastructure.cloudinary.CloudinaryService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 import java.util.Locale;
@@ -31,20 +31,20 @@ public class MenuMapper {
 
     public MenuResponse from(String shortUrlId, String businessName, Menu menu, Locale locale) {
         return MenuResponse.builder()
-                .id(menu.getId())
-                .businessName(businessName)
-                .shortUrlId(shortUrlId)
-                .sections(menu.getSections().stream()
-                        .map(ms -> MenuSectionResponse.builder()
-                                .name(ms.getName())
-                                .dishes(dishMapper.from(ms, menu.getCurrency(), locale))
-                                .build())
-                        .collect(toList())
-                )
-                .imageUrl(!StringUtils.isEmpty(menu.getImageUrl()) ? cloudinaryService.getOptimizedUrl(menu.getImageUrl()) : "")
-                .currency(menu.getCurrency().getCurrencyCode())
-                .name(menu.getName())
-                .build();
+            .id(menu.getId())
+            .businessName(businessName)
+            .shortUrlId(shortUrlId)
+            .sections(menu.getSections().stream()
+                .map(ms -> MenuSectionResponse.builder()
+                    .name(ms.getName())
+                    .dishes(dishMapper.from(ms, menu.getCurrency(), locale))
+                    .build())
+                .collect(toList())
+            )
+            .imageUrl(!ObjectUtils.isEmpty(menu.getImageUrl()) ? cloudinaryService.getOptimizedUrl(menu.getImageUrl(), null) : "") // We use null because always we have url
+            .currency(menu.getCurrency().getCurrencyCode())
+            .name(menu.getName())
+            .build();
     }
 
     // TODO: REFACTOR ME PLS
@@ -63,17 +63,17 @@ public class MenuMapper {
         }
         Business business = optionalBusiness.get();
         return shortUrlRepository.findByCustomerEmail(customerEmail)
-                .flatMap(shortUrl -> Optional.ofNullable(shortUrl.getId()))
-                .flatMap(shortUrlId -> Optional.ofNullable(from(shortUrlId, business.getName(), menu, locale)))
-                .flatMap(menuResponse -> Optional.ofNullable(UpdateMenuResponse.builder()
-                        .sections(menuResponse.getSections())
-                        .name(menuResponse.getName())
-                        .customerEmail(customerEmail)
-                        .shortUrlId(menuResponse.getShortUrlId())
-                        .imageUrl(menuResponse.getImageUrl())
-                        .id(menuResponse.getId())
-                        .currency(menuResponse.getCurrency())
-                        .build())
-                );
+            .flatMap(shortUrl -> Optional.ofNullable(shortUrl.getId()))
+            .flatMap(shortUrlId -> Optional.ofNullable(from(shortUrlId, business.getName(), menu, locale)))
+            .flatMap(menuResponse -> Optional.ofNullable(UpdateMenuResponse.builder()
+                .sections(menuResponse.getSections())
+                .name(menuResponse.getName())
+                .customerEmail(customerEmail)
+                .shortUrlId(menuResponse.getShortUrlId())
+                .imageUrl(menuResponse.getImageUrl())
+                .id(menuResponse.getId())
+                .currency(menuResponse.getCurrency())
+                .build())
+            );
     }
 }

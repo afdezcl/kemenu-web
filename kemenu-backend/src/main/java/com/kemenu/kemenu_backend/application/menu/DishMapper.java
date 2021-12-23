@@ -6,7 +6,7 @@ import com.kemenu.kemenu_backend.domain.model.MenuSection;
 import com.kemenu.kemenu_backend.infrastructure.cloudinary.CloudinaryService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
+import org.springframework.util.ObjectUtils;
 
 import javax.money.CurrencyUnit;
 import java.util.List;
@@ -24,16 +24,17 @@ public class DishMapper {
 
     public List<DishResponse> from(MenuSection menuSection, CurrencyUnit currency, Locale locale) {
         return menuSection.getDishes().stream()
-                .map(d -> DishResponse.builder()
-                        .name(d.getName())
-                        .description(d.getDescription())
-                        .price(d.getPrice())
-                        .formattedPrice(moneyFormatter.withSymbol(d.getPrice(), currency, locale))
-                        .allergens(d.getAllergens().stream().map(a -> AllergenData.builder().id(a.getId()).name(a.getName()).build()).collect(toList()))
-                        .imageUrl(!StringUtils.isEmpty(d.getImageUrl()) ? cloudinaryService.getOptimizedUrl(d.getImageUrl()) : "")
-                        .available(isNull(d.getAvailable()) || d.getAvailable()) // TODO: Refactor when frontend use it
-                        .build()
-                )
-                .collect(toList());
+            .map(d -> DishResponse.builder()
+                .name(d.getName())
+                .description(d.getDescription())
+                .price(d.getPrice())
+                .formattedPrice(moneyFormatter.withSymbol(d.getPrice(), currency, locale))
+                .allergens(
+                    d.getAllergens().stream().map(a -> AllergenData.builder().id(a.getId()).name(a.getName()).build()).collect(toList()))
+                .imageUrl(!ObjectUtils.isEmpty(d.getImageUrl()) ? cloudinaryService.getOptimizedUrl(d.getImageUrl(), null) : "") // We use null because always we have url
+                .available(isNull(d.getAvailable()) || d.getAvailable()) // TODO: Refactor when frontend use it
+                .build()
+            )
+            .collect(toList());
     }
 }
