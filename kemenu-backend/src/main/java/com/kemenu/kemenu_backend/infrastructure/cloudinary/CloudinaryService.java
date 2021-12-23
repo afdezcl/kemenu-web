@@ -87,7 +87,7 @@ public class CloudinaryService {
                     log.error("URL from cloudinary is not well formed", e);
                     return "";
                 } catch (FileNotFoundException e) {
-                    log.info("Image not found in cloudinary, probably it's a old cloudinary image");
+                    log.info("Image not found in cloudinary, probably it's an old cloudinary image");
                     return "";
                 } catch (Exception e) {
                     log.error("Something wrong happened when trying to download image from cloudinary", e);
