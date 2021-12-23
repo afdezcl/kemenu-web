@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -84,6 +85,9 @@ public class CloudinaryService {
                     return allowedOrigins.get(0) + IMAGE_PATH + imageName;
                 } catch (MalformedURLException e) {
                     log.error("URL from cloudinary is not well formed", e);
+                    return "";
+                } catch (FileNotFoundException e) {
+                    log.info("Image not found in cloudinary, probably it's a old cloudinary image");
                     return "";
                 } catch (Exception e) {
                     log.error("Something wrong happened when trying to download image from cloudinary", e);
